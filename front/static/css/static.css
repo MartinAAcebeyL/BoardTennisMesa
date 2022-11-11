@@ -1,5 +1,13 @@
+:root {
+    --Navy-Blue: #05445E;
+    --Blue-Grotto: #189AB4;
+    --Blue-Green: #75E6DA;
+    --Baby-Blue: #D4F1F4;
+}
+
 * {
     box-sizing: border-box;
+    color: var(--Blue-Grotto);
 }
 
 body {
@@ -12,20 +20,98 @@ body {
     justify-content: center;
 }
 
+#tablero {
+    padding: .6rem 1rem;
+    border: .1rem solid var(--Blue-Grotto);
+    border-radius: .3rem;
+    background: var(--Baby-Blue);
+}
+
 #tablero #top {
     display: flex;
     justify-content: space-between;
-    background: red;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+#tablero #top :nth-child(2) {
+    background: var(--Blue-Grotto);
+    padding: .3rem 1rem;
+    border-radius: .4rem;
+    color: white;
 }
 
 #tablero #controls #touch {
+    font-size: 1.8rem;
     display: flex;
-    justify-content: space-around;
-    background: blue;
+    justify-content: space-between;
+    padding: 1rem .1rem;
+}
+
+.equipos {
+    padding: 0.5rem;
+    width: 48%;
+    background-color: white;
+    border-radius: .8rem;
+    box-shadow: .2rem .3rem var(--Blue-Grotto);
+    position: relative;
+}
+
+.equipos header p {
+    margin: .1rem;
+}
+
+.equipos header {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.equipos header :nth-child(2) {
+    border: .2rem solid var(--Navy-Blue);
+    border-radius: 50%;
+    padding: .2rem .7rem;
+}
+
+#equipo2 header{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.equipos .puntos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    padding: .1rem .2rem;
+    border: .2rem solid var(--Navy-Blue);
+    border-radius: 10%;
+    margin-top: 1rem;
+}
+
+.equipos .saque {
+    background: var(--Blue-Grotto);
+    position: absolute;
+    left: 80%;
+    bottom: 2rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
 }
 
 #tablero #controls #footer {
+    margin-top: .1rem;
+    font-size: 1.8rem;
     display: flex;
     justify-content: space-around;
-    background: purple;
+}  
+
+#tablero #controls #footer .targeta {
+    background-color: yellow;
+    border: .01rem solid var(--Navy-Blue);
+    border-radius: 40%;
+    padding: .1rem .5rem;
 }
