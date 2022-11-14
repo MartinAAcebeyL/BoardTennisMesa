@@ -38,7 +38,7 @@ body {
 
 #tablero #top :nth-child(2) {
     background: var(--Blue-Grotto);
-    padding: .3rem 1rem;
+    padding: .2rem 1rem;
     border-radius: .4rem;
     color: white;
 }
@@ -76,7 +76,7 @@ body {
     padding: .2rem .7rem;
 }
 
-#equipo2 header{
+#equipo2 header {
     display: flex;
     flex-direction: row-reverse;
 }
@@ -107,11 +107,11 @@ body {
     font-size: 1.8rem;
     display: flex;
     justify-content: space-around;
-}  
+}
 
 #tablero #controls #footer .targeta {
     background-color: yellow;
     border: .01rem solid var(--Navy-Blue);
     border-radius: 40%;
-    padding: .1rem .5rem;
+    padding: 1rem 1rem;
 }
