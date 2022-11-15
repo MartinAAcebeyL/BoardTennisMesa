@@ -11,10 +11,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
   </head>
+
   <body>
     <main id="tablero">
       <header id="top">
-        <div id="relog">4:15</div>
+        <div id="reloj">00:00:00</div>
         <div id="catidad_sets">7 sets</div>
         <div id="retroceder">
           <i class="fa-solid fa-arrow-left fa-xl"></i>
@@ -40,10 +41,25 @@
           </section>
         </section>
         <footer id="footer">
-          <section class="targeta">0</section>
-          <section class="targeta">0</section>
+          <button
+            id="contTarjetaAmarilla1"
+            class="targeta"
+            onclick="countingClicks1()"
+          >
+            0
+          </button>
+          <button
+            id="contTarjetaAmarilla2"
+            class="targeta"
+            onclick="countingClicks2()"
+          >
+            0
+          </button>
         </footer>
       </section>
     </main>
+
+    <script src="./static/js/javascript.js"></script>
+    <script src="./static/js/script.js"></script>
   </body>
 </html>
