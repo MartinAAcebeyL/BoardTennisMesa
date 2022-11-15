@@ -113,5 +113,5 @@ body {
     background-color: yellow;
     border: .01rem solid var(--Navy-Blue);
     border-radius: 40%;
-    padding: 1rem 1rem;
+    padding: .5rem .5rem;
 }
