@@ -1,21 +1,27 @@
+//reloj
 const reloj = document.querySelector("#reloj");
 
 let reloj_activado = false;
+let inicia_partido = false;
 
-let hrs = 0;//localStorage.getItem("hrs");
-let min = 0;//localStorage.getItem("min");
-let sec = 0;//localStorage.getItem("sec");
+let hrs = 0;
+let min = 0;
+let sec = 0;
 var t;
 
 reloj.addEventListener('click', () => {
     reloj_activado = !reloj_activado;
+
+    if (reloj_activado && !inicia_partido) {
+        localStorage.setItem("puntos-equipo-1", 0);
+        localStorage.setItem("puntos-equipo-2", 0);
+        inicia_partido = true;
+    }
+
     if (reloj_activado)
         timer()
     else {
         clearTimeout(t)
-        // hrs = localStorage.getItem("hrs");
-        // min = localStorage.getItem("min");
-        // sec = localStorage.getItem("sec");
     }
 });
 
@@ -47,4 +53,32 @@ function add() {
 
 function timer() {
     t = setTimeout(add, 1000);
+}
+
+//puntos ganados
+
+const equipos = document.querySelectorAll(".puntos");
+
+function sumarPuntos(event) {
+    let puntos_actuales;
+    if (equipos[0] == event.target){
+        puntos_actuales = parseInt(localStorage.getItem("puntos-equipo-1"));
+        localStorage.setItem("puntos-equipo-1", ++puntos_actuales);
+    }else{
+        puntos_actuales = parseInt(localStorage.getItem("puntos-equipo-2"));
+        localStorage.setItem("puntos-equipo-2", ++puntos_actuales);
+    }
+
+    this.textContent = puntos_actuales.toString();
+}
+
+equipos.forEach(el => el.addEventListener(
+    'click', sumarPuntos
+));
+
+// general
+//local storage
+if (localStorage.length>0){
+    equipos[0].textContent = parseInt(localStorage.getItem("puntos-equipo-1"));
+    equipos[1].textContent = parseInt(localStorage.getItem("puntos-equipo-2"));
 }
