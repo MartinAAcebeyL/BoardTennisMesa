@@ -144,3 +144,30 @@ if (localStorage.length > 0) {
     sets_equipos[0].textContent = parseInt(localStorage.getItem(sets_equipo_1));
     sets_equipos[1].textContent = parseInt(localStorage.getItem(sets_equipo_2));
 }
+
+//Contador de Tarjetas Amarillas
+let cont1 = 0,
+    cont2 = 0;
+
+function countingClicks1() {
+    document.getElementById("contTarjetaAmarilla1").innerHTML = ++cont1;
+    if (cont1 >= 2) {
+        cont1 = 0;
+        cont2 = 0;
+        alert("Tarjeta roja, Equipo 1 perdedor");
+        document.getElementById("contTarjetaAmarilla1").innerHTML = cont1;
+        document.getElementById("contTarjetaAmarilla2").innerHTML = cont1;
+    }
+}
+
+
+function countingClicks2() {
+    document.getElementById("contTarjetaAmarilla2").innerHTML = ++cont2;
+    if (cont2 >= 2) {
+        cont1 = 0;
+        cont2 = 0;
+        alert("Tarjeta roja,Equipo 2 perdedor");
+        document.getElementById("contTarjetaAmarilla2").innerHTML = cont2;
+        document.getElementById("contTarjetaAmarilla1").innerHTML = cont1;
+    }
+}
