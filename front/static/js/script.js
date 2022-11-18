@@ -1,16 +1,10 @@
-// import { puntos_equipo_1, puntos_equipo_2, sets_equipo_1, sets_equipo_2 } from "./localstorage";
-
-//puntos
-const puntos_equipo_1 = "puntos-equipo-1";
-const puntos_equipo_2 = "puntos-equipo-2";
-//sets
-const sets_equipo_1 = "sets-equipo-1";
-const sets_equipo_2 = "sets-equipo-2";
+import { _equipo1 as equipo1, _equipo2 as equipo2 } from "./factory.js"
 
 //varios
 let limite_puntos = 11;
 let limite_sets = 7;
 let inicia_partido = false;
+let ultimo_juego = null;
 
 //reloj
 const reloj = document.querySelector("#reloj");
@@ -27,20 +21,16 @@ reloj.addEventListener('click', () => {
 
     if (reloj_activado && !inicia_partido) {
         //puntos de cada equipo
-        localStorage.setItem(puntos_equipo_1, 0);
-        localStorage.setItem(puntos_equipo_2, 0);
+        localStorage.setItem(equipo1.puntos_ls, 0);
+        localStorage.setItem(equipo2.puntos_ls, 0);
         //sets de cada equipo
-        localStorage.setItem(sets_equipo_1, 0);
-        localStorage.setItem(sets_equipo_2, 0);
+        localStorage.setItem(equipo1.sets_ls, 0);
+        localStorage.setItem(equipo2.sets_ls, 0);
 
         inicia_partido = true;
     }
 
-    if (reloj_activado)
-        timer()
-    else {
-        clearTimeout(t)
-    }
+    reloj_activado ? timer() : clearTimeout(t);
 });
 
 
@@ -54,14 +44,10 @@ function tick() {
             hrs++;
         }
     }
-    // localStorage.setItem("hrs", hrs);
-    // localStorage.setItem("min", min);
-    // localStorage.setItem("sec", sec);
 }
 
 function add() {
     tick();
-
 
     reloj.textContent = (hrs > 9 ? hrs : "0" + hrs)
         + ":" + (min > 9 ? min : "0" + min)
@@ -74,23 +60,24 @@ function timer() {
 }
 
 //puntos ganados
-
 const puntos_equipos = document.querySelectorAll(".puntos");
 
 function sumarPuntos(event) {
     let puntos_actuales;
-    if (puntos_equipos[0] == event.target) {
-        puntos_actuales = parseInt(localStorage.getItem(puntos_equipo_1));
-        localStorage.setItem(puntos_equipo_1, ++puntos_actuales);
+    //puntos_equipos[0]
+    if (equipo1.etiqueta_puntos == event.target) {
+        puntos_actuales = parseInt(localStorage.getItem(equipo1.puntos_ls));
+        localStorage.setItem(equipo1.puntos_ls, ++puntos_actuales);
+        ultimo_juego = equipo1;
     } else {
-        puntos_actuales = parseInt(localStorage.getItem(puntos_equipo_2));
-        localStorage.setItem(puntos_equipo_2, ++puntos_actuales);
+        puntos_actuales = parseInt(localStorage.getItem(equipo2.puntos_ls));
+        localStorage.setItem(equipo2.puntos_ls, ++puntos_actuales);
+        ultimo_juego = equipo2;
     }
     this.textContent = puntos_actuales.toString();
-    if (puntos_equipos[0].textContent == limite_puntos - 1 && puntos_equipos[1].textContent == limite_puntos - 1)
+    if (equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1)
         limite_puntos += 2
     console.clear()
-    console.log(limite_puntos);
     sumarSets(this);
 }
 
@@ -98,8 +85,8 @@ function actualizarPuntos() {
     puntos_equipos.forEach(
         el => el.textContent = 0
     )
-    localStorage.setItem(puntos_equipo_1, 0);
-    localStorage.setItem(puntos_equipo_2, 0);
+    localStorage.setItem(equipo1.puntos_ls, 0);
+    localStorage.setItem(equipo2.puntos_ls, 0);
 }
 
 puntos_equipos.forEach(el => el.addEventListener(
@@ -107,29 +94,29 @@ puntos_equipos.forEach(el => el.addEventListener(
 ));
 
 //sets ganados
-const sets_equipos = document.querySelectorAll(".sets");
-
 function sumarSets(t) {
     if (t.textContent > limite_puntos) {
         t.textContent = 0
-        if (t == puntos_equipos[0])
-            actualiar_set(sets_equipo_1, 1);
+        if (t == equipo1.etiqueta_puntos)
+            actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
         else
-            actualiar_set(sets_equipo_2, 2);
-        limite_puntos = 11
+            actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
+        ultimo_juego = null;
+        limite_puntos = 11;
     }
 }
 
 function actualiar_set(set_equipo, equipo) {
-    equipo -= 1;
     let sets_actuales = parseInt(localStorage.getItem(set_equipo));
     localStorage.setItem(set_equipo, ++sets_actuales);
-    sets_equipos[equipo].textContent = sets_actuales.toString();
-    alguien_gano(sets_equipos[equipo]);
+    equipo.textContent = sets_actuales.toString();
+    alguien_gano(equipo);
     actualizarPuntos()
 }
 
 function alguien_gano(t) {
+    const sets_equipos = document.querySelectorAll(".sets");
+
     if (t.textContent >= limite_sets / 2) {
         sets_equipos[0] == t ? alert("the winner team 1") : alert("the winner team 2");
     }
@@ -138,12 +125,25 @@ function alguien_gano(t) {
 // general
 if (localStorage.length > 0) {
     //puntos de cada equipo
-    puntos_equipos[0].textContent = parseInt(localStorage.getItem(puntos_equipo_1));
-    puntos_equipos[1].textContent = parseInt(localStorage.getItem(puntos_equipo_2));
+    equipo1.etiqueta_puntos.textContent = parseInt(localStorage.getItem(equipo1.puntos_ls));
+    equipo2.etiqueta_puntos.textContent = parseInt(localStorage.getItem(equipo2.puntos_ls));
     //sets de cada equipo
-    sets_equipos[0].textContent = parseInt(localStorage.getItem(sets_equipo_1));
-    sets_equipos[1].textContent = parseInt(localStorage.getItem(sets_equipo_2));
+    equipo1.etiqueta_sets.textContent = parseInt(localStorage.getItem(equipo1.sets_ls));
+    equipo2.etiqueta_sets.textContent = parseInt(localStorage.getItem(equipo2.sets_ls));
 }
+//volver atras
+
+const flecha = document.querySelector('#atras');
+
+function atras(event) {
+    if (ultimo_juego != null) {
+        let aux = ultimo_juego.etiqueta_puntos.textContent--;
+        localStorage.setItem(ultimo_juego.puntos_ls, --aux);
+    }
+    ultimo_juego = null;
+}
+
+flecha.addEventListener('click', atras)
 
 //Contador de Tarjetas Amarillas
 let cont1 = 0,
@@ -159,7 +159,6 @@ function countingClicks1() {
         document.getElementById("contTarjetaAmarilla2").innerHTML = cont1;
     }
 }
-
 
 function countingClicks2() {
     document.getElementById("contTarjetaAmarilla2").innerHTML = ++cont2;
