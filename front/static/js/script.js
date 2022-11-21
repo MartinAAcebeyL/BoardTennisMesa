@@ -1,8 +1,9 @@
 import { _equipo1 as equipo1, _equipo2 as equipo2 } from "./factory.js"
+import { sets } from "./consumoAPi.js"
 
 //varios
 let limite_puntos = 11;
-let limite_sets = 7;
+let limite_sets = sets;
 let inicia_partido = false;
 let ultimo_juego = null;
 
@@ -77,7 +78,6 @@ function sumarPuntos(event) {
     this.textContent = puntos_actuales.toString();
     if (equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1)
         limite_puntos += 2
-    console.clear()
     sumarSets(this);
 }
 
