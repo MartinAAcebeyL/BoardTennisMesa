@@ -148,6 +148,29 @@ function atras(event) {
 
 flecha.addEventListener('click', atras)
 
+//tarjetas Rojas
+var cont1Rojo = document.getElementById("contTarjetaRoja1");
+cont1Rojo.innerText = localStorage.getItem("contTarjetaRoja1") || "0";
+
+var cont2Rojo = document.getElementById("contTarjetaRoja2");
+cont2Rojo.innerText = localStorage.getItem("contTarjetaRoja1") || "0";
+
+function mostrar1() {
+    document.getElementById('contTarjetaRoja1').style.display = 'block';
+}
+
+function ocultar1() {
+    document.getElementById('contTarjetaRoja1').style.display = 'none';
+}
+
+function mostrar2() {
+    document.getElementById('contTarjetaRoja2').style.display = 'block';
+}
+
+function ocultar2() {
+    document.getElementById('contTarjetaRoja2').style.display = 'none';
+}
+
 //Contador de Tarjetas Amarillas
 var contador1 = document.getElementById("contTarjetaAmarilla1");
 contador1.innerText = localStorage.getItem("contTarjetaAmarilla1") || "0";
@@ -156,19 +179,48 @@ var contador2 = document.getElementById("contTarjetaAmarilla2");
 contador2.innerText = localStorage.getItem("contTarjetaAmarilla2") || "0";
 
 function test1() {
-    //inicia_partido = true;
     contador1.innerText = parseInt(contador1.innerText) + 1;
-    if (contador1.innerText > 2) {
+    if (contador2.innerText == 2 || contador1.innerText > 2) {
+        contador2.innerText = "0";
         contador1.innerText = "0";
+        cont2Rojo.innerText = "0";
+        cont1Rojo.innerText = "0";
+        ocultar2();
+        ocultar1();
+    } else if (contador1.innerText == 2) {
+        cont1Rojo.innerText = parseInt(cont1Rojo.innerText) + 1;
+        mostrar1();
+        mostrar2();
+    } else if (contador1.innerText == "0" && contador2.innerText == "0") {
+        ocultar2();
+        ocultar1();
+    } else {
+        ocultar2();
+        ocultar1();
     }
 }
 
 function test2() {
-    //inicia_partido = true;
     contador2.innerText = parseInt(contador2.innerText) + 1;
-    if (contador2.innerText > 2) {
+    if (contador1.innerText == 2 || contador2.innerText > 2) {
         contador2.innerText = "0";
+        contador1.innerText = "0";
+        cont2Rojo.innerText = "0";
+        cont1Rojo.innerText = "0";
+        ocultar2();
+        ocultar1();
+    } else if (contador2.innerText == 2) {
+        cont2Rojo.innerText = parseInt(cont2Rojo.innerText) + 1;
+        mostrar2();
+        mostrar1();
+    } else if (contador1.innerText == "0" && contador2.innerText == "0") {
+        ocultar2();
+        ocultar1();
+    } else {
+        ocultar2();
+        ocultar1();
     }
 }
+
 contador1.addEventListener('click', test1, true);
 contador2.addEventListener('click', test2, true);
