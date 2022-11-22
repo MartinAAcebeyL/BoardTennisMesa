@@ -159,17 +159,37 @@ function mostrar1() {
     document.getElementById('contTarjetaRoja1').style.display = 'block';
 }
 
-function ocultar1() {
-    document.getElementById('contTarjetaRoja1').style.display = 'none';
-}
-
 function mostrar2() {
     document.getElementById('contTarjetaRoja2').style.display = 'block';
+}
+
+function ocultar1() {
+    document.getElementById('contTarjetaRoja1').style.display = 'none';
 }
 
 function ocultar2() {
     document.getElementById('contTarjetaRoja2').style.display = 'none';
 }
+
+function reiniciar1() {
+    contador2.innerText = "0";
+    contador1.innerText = "0";
+    cont2Rojo.innerText = "0";
+    cont1Rojo.innerText = "0";
+    ocultar2();
+    ocultar1();
+}
+
+function reiniciar2() {
+    contador2.innerText = "0";
+    contador1.innerText = "0";
+    cont2Rojo.innerText = "0";
+    cont1Rojo.innerText = "0";
+    ocultar2();
+    ocultar1();
+}
+cont1Rojo.addEventListener('click', reiniciar1, true);
+cont2Rojo.addEventListener('click', reiniciar2, true);
 
 //Contador de Tarjetas Amarillas
 var contador1 = document.getElementById("contTarjetaAmarilla1");

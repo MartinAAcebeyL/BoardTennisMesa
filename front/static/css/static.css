@@ -115,3 +115,11 @@ body {
     border-radius: 40%;
     padding: .5rem .5rem;
 }
+
+#tablero #controls #footer .targetaRoja {
+    background-color: #F85E3C;
+    color: black;
+    border-radius: 40%;
+    padding: .5rem .5rem;
+    display: none;
+}
