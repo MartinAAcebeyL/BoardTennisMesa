@@ -18,7 +18,7 @@ function factory(nombre, etiqueta_puntos, etiqueta_sets, etiqueta_nombre, etique
         etiqueta_nombre,
         etiqueta_saque,
         ultimo_juego: false,
-        puntos_ls:"puntos-"+nombre,
+        puntos_ls: "puntos-" + nombre,
         sets_ls: "sets-" + nombre
     }
 }

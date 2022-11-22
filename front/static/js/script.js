@@ -1,4 +1,7 @@
-import { _equipo1 as equipo1, _equipo2 as equipo2 } from "./factory.js"
+import {
+  _equipo1 as equipo1,
+  _equipo2 as equipo2,
+} from './factory.js';
 
 //varios
 let limite_puntos = 11;
@@ -49,9 +52,9 @@ function tick() {
 function add() {
     tick();
 
-    reloj.textContent = (hrs > 9 ? hrs : "0" + hrs)
-        + ":" + (min > 9 ? min : "0" + min)
-        + ":" + (sec > 9 ? sec : "0" + sec);
+    reloj.textContent = (hrs > 9 ? hrs : "0" + hrs) +
+        ":" + (min > 9 ? min : "0" + min) +
+        ":" + (sec > 9 ? sec : "0" + sec);
     timer();
 }
 
@@ -146,27 +149,26 @@ function atras(event) {
 flecha.addEventListener('click', atras)
 
 //Contador de Tarjetas Amarillas
-let cont1 = 0,
-    cont2 = 0;
+var contador1 = document.getElementById("contTarjetaAmarilla1");
+contador1.innerText = localStorage.getItem("contTarjetaAmarilla1") || "0";
 
-function countingClicks1() {
-    document.getElementById("contTarjetaAmarilla1").innerHTML = ++cont1;
-    if (cont1 >= 2) {
-        cont1 = 0;
-        cont2 = 0;
-        alert("Tarjeta roja, Equipo 1 perdedor");
-        document.getElementById("contTarjetaAmarilla1").innerHTML = cont1;
-        document.getElementById("contTarjetaAmarilla2").innerHTML = cont1;
+var contador2 = document.getElementById("contTarjetaAmarilla2");
+contador2.innerText = localStorage.getItem("contTarjetaAmarilla2") || "0";
+
+function test1() {
+    //inicia_partido = true;
+    contador1.innerText = parseInt(contador1.innerText) + 1;
+    if (contador1.innerText > 2) {
+        contador1.innerText = "0";
     }
 }
 
-function countingClicks2() {
-    document.getElementById("contTarjetaAmarilla2").innerHTML = ++cont2;
-    if (cont2 >= 2) {
-        cont1 = 0;
-        cont2 = 0;
-        alert("Tarjeta roja,Equipo 2 perdedor");
-        document.getElementById("contTarjetaAmarilla2").innerHTML = cont2;
-        document.getElementById("contTarjetaAmarilla1").innerHTML = cont1;
+function test2() {
+    //inicia_partido = true;
+    contador2.innerText = parseInt(contador2.innerText) + 1;
+    if (contador2.innerText > 2) {
+        contador2.innerText = "0";
     }
 }
+contador1.addEventListener('click', test1, true);
+contador2.addEventListener('click', test2, true);
