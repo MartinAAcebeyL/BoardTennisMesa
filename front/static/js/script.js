@@ -5,7 +5,7 @@ import { sets } from "./consumoAPi.js"
 //varios
 let limite_puntos = 11;
 let limite_sets = sets;
-let inicia_partido = false;
+let inicia_partido = localStorage.getItem('iniciar_partido') || false;
 let ultimo_juego = null;
 
 //reloj
@@ -29,7 +29,7 @@ reloj.addEventListener('click', () => {
         localStorage.setItem(equipo1.sets_ls, 0);
         localStorage.setItem(equipo2.sets_ls, 0);
 
-        inicia_partido = true;
+        localStorage.setItem('iniciar_partido', true);
     }
 
     reloj_activado ? timer() : clearTimeout(t);
