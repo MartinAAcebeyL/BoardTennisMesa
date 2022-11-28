@@ -8,6 +8,7 @@
     <title>tablero</title>
     <link rel="stylesheet" href="./static/css/static.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 
 <body>
@@ -15,7 +16,6 @@
 
         <header id="top">
             <div id="reloj">00:00:00</div>
-            <div id="catidad_sets">7 sets</div>
             <div id="retroceder">
                 <i id="atras" class="fa-solid fa-arrow-left fa-xl"></i>
             </div>
@@ -28,7 +28,12 @@
                         <div class="sets">0</div>
                     </header>
                     <div class="puntos">0</div>
-                    <div class="saque"></div>
+                    <div class='fas fa-table-tennis saque1' style='font-size:24px'></div>
+                    <footer id="footer1">
+                        <a id="contTarjetaAmarilla1" class="targeta">0</a>
+                        <a id="contTarjetaRoja1" class="targetaRoja">1</a>
+
+                    </footer>
                 </section>
                 <section class="equipos" id="equipo2">
                     <header>
@@ -36,21 +41,20 @@
                         <div class="sets">0</div>
                     </header>
                     <div class="puntos">0</div>
-                    <div class="saque"></div>
+                    <div class='fas fa-table-tennis saque2' style='font-size:24px'></div>
+                    <footer id="footer2">
+                        <a id="contTarjetaRoja2" class="targetaRoja">1</a>
+                        <a id="contTarjetaAmarilla2" class="targeta">0</a>
+                    </footer>
                 </section>
             </section>
-            <footer id="footer">
-                <button id="contTarjetaAmarilla1" class="targeta">0</button>
-                <button id="contTarjetaRoja1" class="targetaRoja">1</button>
-                <button id="contTarjetaRoja2" class="targetaRoja">1</button>
-                <button id="contTarjetaAmarilla2" class="targeta">0</button>
 
-            </footer>
         </section>
     </main>
     <script type="module" src="./static/js/consumoAPi.js"></script>
     <script type="module" src="./static/js/factory.js"></script>
     <script type="module" src="./static/js/script.js"></script>
 
-  </body>
+</body>
+
 </html>
