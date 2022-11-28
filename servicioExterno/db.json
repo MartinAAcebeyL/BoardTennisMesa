@@ -1,7 +1,6 @@
 {
     "1": {
-        "equipos": [
-            {
+        "equipos": [{
                 "id": 1,
                 "nombres": "Carlos David",
                 "apellidos": "Torres Fuentes",
@@ -25,8 +24,7 @@
         "sets": 7
     },
     "2": {
-        "equipos": [
-            {
+        "equipos": [{
                 "id": 1,
                 "nombre": "Alexy Sdenka",
                 "apellido": "Taboada Chuve",
@@ -51,8 +49,7 @@
         "sets": 3
     },
     "3": {
-        "equipos": [
-            {
+        "equipos": [{
                 "id": 5,
                 "nombre": "Abril Jhoana",
                 "apellido": "Escalera",
@@ -76,8 +73,7 @@
         "sets": 5
     },
     "4": {
-        "equipos": [
-            {
+        "equipos": [{
                 "id": 7,
                 "nombre": "Maria Jose",
                 "apellido": "Cuevas Calderon",
@@ -101,8 +97,7 @@
         "sets": 5
     },
     "5": {
-        "equipos": [
-            {
+        "equipos": [{
                 "id": 9,
                 "nombre": "Karla",
                 "apellido": "Marques",
