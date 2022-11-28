@@ -89,23 +89,15 @@ body {
 }
 
 .equipos .saque1 {
-    background: var(--Blanco);
     position: absolute;
     left: 80%;
     bottom: 3rem;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
 }
 
 .equipos .saque2 {
-    background: var(--Blanco);
     position: absolute;
     right: 80%;
     bottom: 3rem;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
 }
 
 #tablero #controls #footer1 {
@@ -120,7 +112,7 @@ body {
 #tablero #controls #footer1 #contTarjetaAmarilla1 {
     padding: .3rem .6rem;
     font-size: 1.4rem;
-    color: #ffff00;
+    color: yellow;
 }
 
 #tablero #controls #footer2 #contTarjetaAmarilla2 {
@@ -130,7 +122,7 @@ body {
 }
 
 #tablero #controls #footer1 #contTarjetaRoja1 {
-    color: #ff0000;
+    color: red;
     padding: .2rem .6rem;
     display: none;
     padding: .3rem .6rem;
