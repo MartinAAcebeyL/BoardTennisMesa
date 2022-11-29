@@ -1,6 +1,8 @@
-import { _equipo1 as equipo1, _equipo2 as equipo2 } from "./factory.js"
-import { sets } from "./consumoAPi.js"
-
+import { sets } from './consumoAPi.js';
+import {
+  _equipo1 as equipo1,
+  _equipo2 as equipo2,
+} from './factory.js';
 
 //varios
 let limite_puntos = 11;
@@ -146,99 +148,20 @@ function atras(event) {
 
 flecha.addEventListener('click', atras)
 
-//tarjetas Rojas
-var cont1Rojo = document.getElementById("contTarjetaRoja1");
-cont1Rojo.innerText = localStorage.getItem("contTarjetaRoja1") || "0";
+//Tarjetas Amarillas
+var Amarilla1 = document.getElementById("Amarilla1");
+Amarilla1.innerHTML = localStorage.getItem("Amarilla1") || "0";
+var Amarilla2 = document.getElementById("Amarilla2");
+Amarilla2.innerHTML = localStorage.getItem("Amarilla2") || "0";
 
-var cont2Rojo = document.getElementById("contTarjetaRoja2");
-cont2Rojo.innerText = localStorage.getItem("contTarjetaRoja1") || "0";
-
-function mostrar1() {
-    document.getElementById('contTarjetaRoja1').style.display = 'block';
+function TAmarilla1() {
+    Amarilla1.innerHTML = parseInt(Amarilla1.innerHTML) + 1;
+    localStorage.setItem("Amarilla1", Amarilla1.innerText);
 }
 
-function mostrar2() {
-    document.getElementById('contTarjetaRoja2').style.display = 'block';
+function TAmarilla2() {
+    Amarilla2.innerHTML = parseInt(Amarilla2.innerHTML) + 1;
+    localStorage.setItem("Amarilla2", Amarilla2.innerText);
 }
-
-function ocultar1() {
-    document.getElementById('contTarjetaRoja1').style.display = 'none';
-}
-
-function ocultar2() {
-    document.getElementById('contTarjetaRoja2').style.display = 'none';
-}
-
-function reiniciar1() {
-    contador2.innerText = "0";
-    contador1.innerText = "0";
-    cont2Rojo.innerText = "0";
-    cont1Rojo.innerText = "0";
-    ocultar2();
-    ocultar1();
-}
-
-function reiniciar2() {
-    contador2.innerText = "0";
-    contador1.innerText = "0";
-    cont2Rojo.innerText = "0";
-    cont1Rojo.innerText = "0";
-    ocultar2();
-    ocultar1();
-}
-cont1Rojo.addEventListener('click', reiniciar1, true);
-cont2Rojo.addEventListener('click', reiniciar2, true);
-
-//Contador de Tarjetas Amarillas
-var contador1 = document.getElementById("contTarjetaAmarilla1");
-contador1.innerText = localStorage.getItem("contTarjetaAmarilla1") || "0";
-
-var contador2 = document.getElementById("contTarjetaAmarilla2");
-contador2.innerText = localStorage.getItem("contTarjetaAmarilla2") || "0";
-
-function test1() {
-    contador1.innerText = parseInt(contador1.innerText) + 1;
-    if (contador2.innerText == 2 || contador1.innerText > 2) {
-        contador2.innerText = "0";
-        contador1.innerText = "0";
-        cont2Rojo.innerText = "0";
-        cont1Rojo.innerText = "0";
-        ocultar2();
-        ocultar1();
-    } else if (contador1.innerText == 2) {
-        cont1Rojo.innerText = parseInt(cont1Rojo.innerText) + 1;
-        mostrar1();
-        mostrar2();
-    } else if (contador1.innerText == "0" && contador2.innerText == "0") {
-        ocultar2();
-        ocultar1();
-    } else {
-        ocultar2();
-        ocultar1();
-    }
-}
-
-function test2() {
-    contador2.innerText = parseInt(contador2.innerText) + 1;
-    if (contador1.innerText == 2 || contador2.innerText > 2) {
-        contador2.innerText = "0";
-        contador1.innerText = "0";
-        cont2Rojo.innerText = "0";
-        cont1Rojo.innerText = "0";
-        ocultar2();
-        ocultar1();
-    } else if (contador2.innerText == 2) {
-        cont2Rojo.innerText = parseInt(cont2Rojo.innerText) + 1;
-        mostrar2();
-        mostrar1();
-    } else if (contador1.innerText == "0" && contador2.innerText == "0") {
-        ocultar2();
-        ocultar1();
-    } else {
-        ocultar2();
-        ocultar1();
-    }
-}
-
-contador1.addEventListener('click', test1, true);
-contador2.addEventListener('click', test2, true);
+Amarilla1.addEventListener("click", TAmarilla1);
+Amarilla2.addEventListener("click", TAmarilla2);
