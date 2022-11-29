@@ -1,7 +1,7 @@
 import { sets } from './consumoAPi.js';
 import {
-  _equipo1 as equipo1,
-  _equipo2 as equipo2,
+    _equipo1 as equipo1,
+    _equipo2 as equipo2,
 } from './factory.js';
 
 //varios
@@ -13,15 +13,15 @@ let ultimo_juego = null;
 //reloj
 const reloj = document.querySelector("#reloj");
 
-let reloj_activado = false;
+let reloj_activado = localStorage.getItem('reloj_activado');
 
-let hrs = 0;
-let min = 0;
-let sec = 0;
+let hrs = localStorage.getItem('hrs') || 0;
+let min = localStorage.getItem('min') || 0;
+let sec = localStorage.getItem('sec') || 0;
 var t;
 
 reloj.addEventListener('click', () => {
-    reloj_activado = !reloj_activado;
+    reloj_activado = true ? (localStorage.getItem('reloj_activado') == 'false' || localStorage.getItem('reloj_activado') == null) : false;
 
     if (reloj_activado && !inicia_partido) {
         //puntos de cada equipo
@@ -32,11 +32,16 @@ reloj.addEventListener('click', () => {
         localStorage.setItem(equipo2.sets_ls, 0);
 
         localStorage.setItem('iniciar_partido', true);
+
+        //reloj
+        localStorage.setItem('hrs', 0);
+        localStorage.setItem('min', 0);
+        localStorage.setItem('sec', 0);
     }
 
-    reloj_activado ? timer() : clearTimeout(t);
+    localStorage.setItem('reloj_activado', reloj_activado);
+    reloj_activado == true ? timer() : clearTimeout(t);
 });
-
 
 function tick() {
     sec++;
@@ -48,6 +53,9 @@ function tick() {
             hrs++;
         }
     }
+    localStorage.setItem('hrs', hrs);
+    localStorage.setItem('min', min);
+    localStorage.setItem('sec', sec);
 }
 
 function add() {
@@ -68,7 +76,6 @@ const puntos_equipos = document.querySelectorAll(".puntos");
 
 function sumarPuntos(event) {
     let puntos_actuales;
-    //puntos_equipos[0]
     if (equipo1.etiqueta_puntos == event.target) {
         puntos_actuales = parseInt(localStorage.getItem(equipo1.puntos_ls));
         localStorage.setItem(equipo1.puntos_ls, ++puntos_actuales);
@@ -133,6 +140,15 @@ if (localStorage.length > 0) {
     //sets de cada equipo
     equipo1.etiqueta_sets.textContent = parseInt(localStorage.getItem(equipo1.sets_ls));
     equipo2.etiqueta_sets.textContent = parseInt(localStorage.getItem(equipo2.sets_ls));
+    //reloj
+    reloj.textContent = (hrs > 9 ? hrs : "0" + hrs) +
+        ":" + (min > 9 ? min : "0" + min) +
+        ":" + (sec > 9 ? sec : "0" + sec);
+
+
+    if (localStorage.getItem('reloj_activado') != null && reloj_activado == 'true')
+        timer();
+
 }
 //volver atras
 
