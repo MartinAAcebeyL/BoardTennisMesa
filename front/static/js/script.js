@@ -1,7 +1,7 @@
 import { sets } from './consumoAPi.js';
 import {
-    _equipo1 as equipo1,
-    _equipo2 as equipo2,
+  _equipo1 as equipo1,
+  _equipo2 as equipo2,
 } from './factory.js';
 
 //varios
@@ -146,8 +146,11 @@ if (localStorage.length > 0) {
         ":" + (sec > 9 ? sec : "0" + sec);
 
 
-    if (localStorage.getItem('reloj_activado') != null && reloj_activado == 'true')
+    if (localStorage.getItem('reloj_activado') != null && reloj_activado == 'true') {
+        console.log('aqui')
         timer();
+
+    }
 
 }
 //volver atras
@@ -211,7 +214,20 @@ function contRojo1() {
         Roja1.innerHTML = 0;
         localStorage.setItem("Roja1", Roja1.innerText);
     } else if (Roja1.innerHTML == 1) {
-        document.getElementById('prueba').disabled = true;
+        flecha.style.pointerEvents = "none";
+        localStorage.setItem('reloj_activado', false);
+        clearTimeout(t);
+        reloj.style.pointerEvents = "none";
+
+        equipo1.etiqueta_saque.style.pointerEvents = "none";
+        equipo1.etiqueta_puntos.style.pointerEvents = "none";
+        Amarilla1.style.pointerEvents = "none";
+        Roja1.style.pointerEvents = "none";
+
+        equipo2.etiqueta_puntos.style.pointerEvents = "none";
+        equipo2.etiqueta_saque.style.pointerEvents = "none";
+        Amarilla2.style.pointerEvents = "none";
+        Roja2.style.pointerEvents = "none";
     }
 }
 
@@ -222,22 +238,21 @@ function contRojo2() {
         Roja2.innerHTML = 0;
         localStorage.setItem("Roja2", Roja2.innerText);
     } else if (Roja2.innerHTML == 1) {
+        flecha.style.pointerEvents = "none";
+        localStorage.setItem('reloj_activado', false);
+        clearTimeout(t);
+        reloj.style.pointerEvents = "none";
 
+        equipo1.etiqueta_saque.style.pointerEvents = "none";
+        equipo1.etiqueta_puntos.style.pointerEvents = "none";
+        Amarilla1.style.pointerEvents = "none";
+        Roja1.style.pointerEvents = "none";
+
+        equipo2.etiqueta_puntos.style.pointerEvents = "none";
+        equipo2.etiqueta_saque.style.pointerEvents = "none";
+        Amarilla2.style.pointerEvents = "none";
+        Roja2.style.pointerEvents = "none";
     }
 }
 Roja1.addEventListener("click", contRojo1);
 Roja2.addEventListener("click", contRojo2);
-//Prueba
-var prueba = document.getElementById("prueba");
-prueba.innerHTML = localStorage.getItem("prueba") || "0";
-
-function aux() {
-    prueba.innerHTML = parseInt(prueba.innerHTML) + 1;
-    localStorage.setItem("prueba", prueba.innerText);
-    if (prueba.innerHTML > 20) {
-        //document.getElementById('prueba').disabled = true;
-
-    }
-
-}
-prueba.addEventListener("click", aux);
