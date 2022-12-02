@@ -16,55 +16,52 @@
     ></script>
   </head>
 
-  <body>
+<body>
+
     <main id="tablero">
-      <header id="top">
-        <div id="reloj">00:00:00</div>
-        <div id="retroceder">
-          <i id="atras" class="fa-solid fa-arrow-left fa-xl"></i>
-        </div>
-      </header>
-      <section id="controls">
-        <section id="touch">
-          <section class="equipos" id="equipo1">
-            <header>
+        <header id="top">
+            <div id="reloj">00:00:00</div>
+            <div id="retroceder">
+                <i id="atras" class="fa-solid fa-arrow-left fa-xl"></i>
+            </div>
+        </header>
+        <section id="controls">
+            <section id="touch">
+                <section class="equipos" id="equipo1">
+                    <header>
               <div>
                 <p class="nombre-equipo">team 1</p>
                 <img src="" alt="imagen de equipo" class="img-equipo" />
               </div>
               <div class="sets">0</div>
             </header>
-            <div class="puntos">0</div>
-            <div
-              class="fas fa-table-tennis saque1"
-              style="font-size: 24px"
-            ></div>
-            <footer id="footer1">
-              <a id="Amarilla1" class="targeta">0</a>
-              <a id="Roja1" class="targetaRoja">1</a>
-            </footer>
-          </section>
-          <section class="equipos" id="equipo2">
-            <header>
+                    <div class="puntos" id="punto1">0</div>
+                    <div class="fas fa-table-tennis saque1" style="font-size: 24px"></div>
+                    <footer id="footer1">
+                        <a id="Amarilla1" class="targeta">0</a>
+                        <a id="Roja1" class="targetaRoja">0</a>
+                    </footer>
+                </section>
+                <section class="equipos" id="equipo2">
+                    <header>
               <div>
                 <img src="" alt="imagen de equipo" class="img-equipo" />
                 <p class="nombre-equipo">team 2</p>
               </div>
               <div class="sets">0</div>
             </header>
-            <div class="puntos">0</div>
-            <div
-              class="fas fa-table-tennis saque2"
-              style="font-size: 24px"
-            ></div>
-            <footer id="footer2">
-              <a id="Roja2" class="targetaRoja">1</a>
-              <a id="Amarilla2" class="targeta">0</a>
-            </footer>
-          </section>
+                    <div class="puntos">0</div>
+                    <div class="fas fa-table-tennis saque2" style="font-size: 24px"></div>
+                    <footer id="footer2">
+                        <a id="Roja2" class="targetaRoja">0</a>
+                        <a id="Amarilla2" class="targeta">0</a>
+                    </footer>
+                </section>
+            </section>
         </section>
       </section>
     </main>
+
     <script type="module" src="./static/js/consumoAPi.js"></script>
     <script type="module" src="./static/js/factory.js"></script>
     <script type="module" src="./static/js/script.js"></script>

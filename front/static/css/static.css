@@ -131,7 +131,6 @@ body {
 #tablero #controls #footer1 #Roja1 {
     color: red;
     padding: .2rem .6rem;
-    display: none;
     padding: .3rem .6rem;
     font-size: 1.4rem;
 }
@@ -139,7 +138,6 @@ body {
 #tablero #controls #footer2 #Roja2 {
     color: red;
     padding: .5rem .5rem;
-    display: none;
     padding: .3rem .6rem;
     font-size: 1.4rem;
 }
