@@ -1,7 +1,7 @@
 import { sets } from './consumoAPi.js';
 import {
-  _equipo1 as equipo1,
-  _equipo2 as equipo2,
+    _equipo1 as equipo1,
+    _equipo2 as equipo2,
 } from './factory.js';
 
 //varios
@@ -86,8 +86,9 @@ function sumarPuntos(event) {
         ultimo_juego = equipo2;
     }
     this.textContent = puntos_actuales.toString();
-    if (equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1)
-        limite_puntos += 2
+    if (equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1) {
+        limite_puntos = parseInt(equipo1.etiqueta_puntos.textContent) + 2;
+    }
     sumarSets(this);
 }
 
@@ -105,7 +106,7 @@ puntos_equipos.forEach(el => el.addEventListener(
 
 //sets ganados
 function sumarSets(t) {
-    if (t.textContent > limite_puntos) {
+    if (t.textContent >= limite_puntos) {
         t.textContent = 0
         if (t == equipo1.etiqueta_puntos)
             actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
@@ -147,9 +148,7 @@ if (localStorage.length > 0) {
 
 
     if (localStorage.getItem('reloj_activado') != null && reloj_activado == 'true') {
-        console.log('aqui')
         timer();
-
     }
 
 }
