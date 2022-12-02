@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tablero</title>
     <link rel="stylesheet" href="./static/css/static.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
 <body>
 
@@ -24,9 +29,12 @@
             <section id="touch">
                 <section class="equipos" id="equipo1">
                     <header>
-                        <p class="nombre-equipo">team 1</p>
-                        <div class="sets">0</div>
-                    </header>
+              <div>
+                <p class="nombre-equipo">team 1</p>
+                <img src="" alt="imagen de equipo" class="img-equipo" />
+              </div>
+              <div class="sets">0</div>
+            </header>
                     <div class="puntos" id="punto1">0</div>
                     <div class="fas fa-table-tennis saque1" style="font-size: 24px"></div>
                     <footer id="footer1">
@@ -36,9 +44,12 @@
                 </section>
                 <section class="equipos" id="equipo2">
                     <header>
-                        <p class="nombre-equipo">team 2</p>
-                        <div class="sets">0</div>
-                    </header>
+              <div>
+                <img src="" alt="imagen de equipo" class="img-equipo" />
+                <p class="nombre-equipo">team 2</p>
+              </div>
+              <div class="sets">0</div>
+            </header>
                     <div class="puntos">0</div>
                     <div class="fas fa-table-tennis saque2" style="font-size: 24px"></div>
                     <footer id="footer2">
@@ -48,11 +59,11 @@
                 </section>
             </section>
         </section>
+      </section>
     </main>
 
     <script type="module" src="./static/js/consumoAPi.js"></script>
     <script type="module" src="./static/js/factory.js"></script>
     <script type="module" src="./static/js/script.js"></script>
-</body>
-
+  </body>
 </html>
