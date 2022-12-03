@@ -141,3 +141,42 @@ body {
     padding: .3rem .6rem;
     font-size: 1.4rem;
 }
+
+/* modales */
+#modal-minuto {
+    background-color: transparent;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(223, 235, 237, 0.5);
+}
+
+#contenido-modal {
+    font-size: 20rem;
+    margin: 0;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: modal;
+    animation-duration: 1s;
+}
+
+@keyframes modal {
+    from {
+        top: -330px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
