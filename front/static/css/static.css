@@ -7,7 +7,6 @@
 * {
     box-sizing: border-box;
     font-family: Orbitron;
-    color: #fff;
 }
 
 body {
@@ -21,6 +20,7 @@ body {
 }
 
 #tablero {
+    color: white;
     padding: .6rem 1rem;
     border: .1rem solid var(--Blue-Grotto);
     border-radius: .3rem;
@@ -143,7 +143,7 @@ body {
 }
 
 /* modales */
-#modal-minuto {
+.modal {
     background-color: transparent;
     display: none;
     position: fixed;
@@ -156,7 +156,7 @@ body {
     background-color: rgba(223, 235, 237, 0.5);
 }
 
-#contenido-modal {
+.contenido-modal {
     font-size: 20rem;
     margin: 0;
     color: black;
@@ -167,6 +167,49 @@ body {
     align-items: center;
     animation-name: modal;
     animation-duration: 1s;
+}
+
+.contenido-modal-envio {
+    margin: 0;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation-name: modal;
+    animation-duration: 1s;
+}
+
+.contenido-modal-envio header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    border-bottom: .3rem solid orange;
+}
+
+.contenido-modal-envio header #sets {
+    font-size: 3rem;
+    color: orange;
+    font-weight: 900;
+    margin: 0;
+}
+
+.contenido-modal-envio header button {
+    display: block;
+    background-color: transparent;
+    font-size: 3rem;
+    padding: .3rem .4rem;
+    border: .2rem solid orange;
+    border-radius: 1rem;
+}
+
+.img-equipo-envio {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1.2rem;
 }
 
 @keyframes modal {
