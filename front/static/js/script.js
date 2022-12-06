@@ -111,13 +111,13 @@ puntos_equipos.forEach(el => el.addEventListener(
 //sets ganados
 function sumarSets(t) {
     if (t.textContent >= limite_puntos) {
-        t.textContent = 0
+        array_puntos1.push(localStorage.getItem(equipo1.puntos_ls))
+        array_puntos2.push(localStorage.getItem(equipo2.puntos_ls))
         if (t == equipo1.etiqueta_puntos)
             actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
         else
             actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
         ultimo_juego = null
-
     }
 }
 
@@ -134,6 +134,8 @@ function alguien_gano(t) {
     const sets_equipos = document.querySelectorAll(".sets");
     if (t.textContent >= limite_sets / 2) {
         sets_equipos[0] == t ? alert("the winner team 1") : alert("the winner team 2");
+        localStorage.setItem('reloj_activado', false);
+        clearTimeout(t);
         envio_datos()
     }
 }
@@ -209,10 +211,27 @@ minuto.addEventListener('click', correr_minuto);
 function envio_datos() {
     const modal = document.getElementById('modal-envio');
     const table = document.getElementById('marcador');
+    const primera_fila = document.getElementById("primera-columna-marcador");
+    const segunda_fila = document.getElementById("segunda-columna-marcador")
+    const sets = document.getElementById("sets");
+    const tiempo_partido = document.getElementById("tiempo-partido");
+
+    for (let i = 0; i < array_puntos1.length; i++) {
+        let row1 = document.createElement('td');
+        row1.innerHTML = array_puntos1[i];
+
+        let row2 = document.createElement('td');
+        row2.innerHTML = array_puntos2[i];
+
+        primera_fila.appendChild(row1);
+        segunda_fila.appendChild(row2);
+    }
+    localStorage.setItem('reloj_activado', false);
+    clearTimeout(t);
+    
+    sets.textContent = `${localStorage.getItem(equipo1.sets_ls)}-${localStorage.getItem(equipo2.sets_ls)}`
+    tiempo_partido.textContent = reloj.textContent;
     modal.style.display = 'block';
-
-    table.insertRow(-1).innerHTML = `<td > </td>`
-
 }
 
 //Tarjetas Amarillas
