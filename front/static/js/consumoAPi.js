@@ -16,7 +16,7 @@ async function getData() {
         document.getElementById('catidad_sets').textContent = json.sets;
         return json.sets;
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 }
 

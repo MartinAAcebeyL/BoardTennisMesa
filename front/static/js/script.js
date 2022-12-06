@@ -112,8 +112,7 @@ function sumarSets(t) {
             actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
         else
             actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
-        ultimo_juego = null;
-        limite_puntos = 11;
+        ultimo_juego = null
     }
 }
 
@@ -121,13 +120,13 @@ function actualiar_set(set_equipo, equipo) {
     let sets_actuales = parseInt(localStorage.getItem(set_equipo));
     localStorage.setItem(set_equipo, ++sets_actuales);
     equipo.textContent = sets_actuales.toString();
+    localStorage.setItem("minuto_presionado", false)
     alguien_gano(equipo);
     actualizarPuntos()
 }
 
 function alguien_gano(t) {
     const sets_equipos = document.querySelectorAll(".sets");
-
     if (t.textContent >= limite_sets / 2) {
         sets_equipos[0] == t ? alert("the winner team 1") : alert("the winner team 2");
     }
@@ -166,6 +165,40 @@ function atras(event) {
 
 flecha.addEventListener('click', atras)
 
+//minuto
+
+const minuto = document.querySelector('#minuto');
+
+function correr_minuto(event) {
+    const modal = document.getElementById("modal-minuto");
+    const contenido = document.getElementById("contenido-modal");
+    
+    let minuto_presionado = localStorage.getItem("minuto_presionado") || localStorage.setItem("minuto_presionado", false);
+
+    if (localStorage.getItem("minuto_presionado")=='false') {
+        minuto_presionado = localStorage.setItem("minuto_presionado", true);
+        let min = 60;
+        modal.style.display = 'block';
+        localStorage.setItem('reloj_activado', false);
+        clearTimeout(t);
+        let tiempo = setInterval(() => {
+            contenido.textContent = min;
+            min--;
+            if (min < 10)
+                contenido.style.color = "red";
+
+            if (min < 0) {
+                clearTimeout(tiempo);
+                modal.style.display = 'none';
+                localStorage.setItem('reloj_activado', true);
+                timer()
+            }
+        }, 1000)
+    }
+
+}
+
+minuto.addEventListener('click', correr_minuto)
 //Tarjetas Amarillas
 var Amarilla1 = document.getElementById("Amarilla1");
 var Amarilla2 = document.getElementById("Amarilla2");
