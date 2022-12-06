@@ -202,7 +202,6 @@ function correr_minuto(event) {
             }
         }, 1000)
     }
-
 }
 
 minuto.addEventListener('click', correr_minuto);
