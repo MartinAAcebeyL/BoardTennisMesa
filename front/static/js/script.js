@@ -3,6 +3,7 @@ import {
     _equipo1 as equipo1,
     _equipo2 as equipo2,
 } from './factory.js';
+import serializar from './postDatos.js';
 
 //varios
 let limite_puntos = 11;
@@ -138,7 +139,7 @@ function alguien_gano(t) {
         sets_equipos[0] == t ? alert("the winner team 1") : alert("the winner team 2");
         localStorage.setItem('reloj_activado', false);
         clearTimeout(t);
-        envio_datos()
+        mostrar_modal_finalizacion()
     }
 }
 
@@ -181,12 +182,11 @@ const minuto = document.querySelector('#minuto');
 function correr_minuto(event) {
     const modal = document.getElementById("modal-minuto");
     const contenido = document.getElementById("contenido-modal-minuto");
-
     let minuto_presionado = localStorage.getItem("minuto_presionado") || localStorage.setItem("minuto_presionado", false);
 
     if (localStorage.getItem("minuto_presionado") == 'false') {
         minuto_presionado = localStorage.setItem("minuto_presionado", true);
-        let min = 60;
+        let min = 59;
         modal.style.display = 'block';
         localStorage.setItem('reloj_activado', false);
         clearTimeout(t);
@@ -195,21 +195,25 @@ function correr_minuto(event) {
             min--;
             if (min < 10)
                 contenido.style.color = "red";
+            else
+                contenido.style.color = "black";
 
-            if (min < 0) {
+            if (min == 0) {
+                console.log(min)
                 clearTimeout(tiempo);
                 modal.style.display = 'none';
                 localStorage.setItem('reloj_activado', true);
                 timer()
             }
         }, 1000)
+        contenido.textContent = '';
     }
 }
 
 minuto.addEventListener('click', correr_minuto);
 // modal de envio de datos
 
-function envio_datos() {
+function mostrar_modal_finalizacion() {
     const modal = document.getElementById('modal-envio');
     const table = document.getElementById('marcador');
     const primera_fila = document.getElementById("primera-columna-marcador");
@@ -229,9 +233,11 @@ function envio_datos() {
     }
     localStorage.setItem('reloj_activado', false);
     clearTimeout(t);
-    
+
     sets.textContent = `${localStorage.getItem(equipo1.sets_ls)}-${localStorage.getItem(equipo2.sets_ls)}`
     tiempo_partido.textContent = reloj.textContent;
+    let json = serializar(table, sets, tiempo_partido);
+    console.log(json)
     modal.style.display = 'block';
 }
 
@@ -297,6 +303,7 @@ function contRojo1() {
         Amarilla2.style.pointerEvents = "none";
         Roja2.style.pointerEvents = "none";
     }
+    mostrar_modal_finalizacion();
 }
 
 function contRojo2() {
@@ -321,6 +328,7 @@ function contRojo2() {
         Amarilla2.style.pointerEvents = "none";
         Roja2.style.pointerEvents = "none";
     }
+    mostrar_modal_finalizacion();
 }
 Roja1.addEventListener("click", contRojo1);
 Roja2.addEventListener("click", contRojo2);
