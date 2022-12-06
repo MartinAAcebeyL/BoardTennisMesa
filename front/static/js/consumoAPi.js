@@ -5,7 +5,7 @@ const imgs = document.querySelectorAll('.img-equipo');
 const nombre_equipos = document.querySelectorAll('.nombre-equipo');
 async function getData() {
     try {
-        let response = await fetch(base_url + '1');
+        let response = await fetch(base_url + '2');
         let json = await response.json();
         const imgs_envio = document.querySelectorAll('.img-equipo-envio');
         const nombres_envio = document.querySelectorAll('.nombre-equipo-envio');

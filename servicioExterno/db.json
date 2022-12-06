@@ -2,8 +2,8 @@
     "1": {
         "equipos": [{
                 "id": 1,
-                "nombres": "Carlos David",
-                "apellidos": "Torres Fuentes",
+                "nombre": "Carlos David",
+                "apellido": "Torres Fuentes",
                 "edad": 23,
                 "equipo": "UDAM",
                 "pais": "Argentina",
@@ -12,8 +12,8 @@
             },
             {
                 "id": 2,
-                "nombres": "Martin Andres",
-                "apellidos": "Acebey Layme",
+                "nombre": "Martin Andres",
+                "apellido": "Acebey Layme",
                 "edad": 21,
                 "equipo": "Table tennis for life",
                 "pais": "Estados Unidos",
