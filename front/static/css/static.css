@@ -11,12 +11,12 @@
 
 body {
     margin: 0;
-    max-height: 100vh;
-    max-width: 100vw;
-    padding: .8rem 0.5rem;
+    height: 100%;
+    width: 100%;
+    padding: .2rem 0.2rem;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #tablero {
@@ -25,7 +25,8 @@ body {
     border: .1rem solid var(--Blue-Grotto);
     border-radius: .3rem;
     background: var(--Negro);
-    max-width: 100%;
+    width: 100%;
+    height: 98vh;
 }
 
 #tablero #top {
@@ -38,11 +39,16 @@ body {
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 0px #fff, 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229);
 }
 
+/* #tablero #controls{
+    height: 50%;
+    max-height: 70%;
+} */
+
 #tablero #controls #touch {
     font-size: 1.8rem;
     display: flex;
     justify-content: space-between;
-    padding: 1rem .1rem;
+    padding: .1rem .1rem;
 }
 
 
@@ -130,8 +136,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 7rem;
+    font-size: 5.2rem;
     border-radius: 10%;
+    height: fit-content;
 }
 
 .equipos #saque1 {
