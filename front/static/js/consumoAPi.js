@@ -15,9 +15,6 @@ async function getData() {
             nombre_equipos[i].textContent = json.equipos[i]['equipo'];
 
             nombre_equipo_modal[i].textContent = json.equipos[i]['equipo'];
-        }
-
-
             //envio
             imgs_envio[i].src = `${json.equipos[i]['imagen_pais']}`;
             nombres_envio[i].textContent = json.equipos[i]['nombre'] + " " + json.equipos[i]['apellido'] ;
