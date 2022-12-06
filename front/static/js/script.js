@@ -1,7 +1,7 @@
 import { sets } from './consumoAPi.js';
 import {
-  _equipo1 as equipo1,
-  _equipo2 as equipo2,
+    _equipo1 as equipo1,
+    _equipo2 as equipo2,
 } from './factory.js';
 
 //varios
@@ -267,8 +267,7 @@ window.addEventListener('load', () => {
 })
 
 //Primer saque
-var btnSaque = document.getElementById("btnSaque") || "Empezar";
-btnSaque.innerHTML = localStorage.getItem("btnSaque");
+var btnSaque = document.getElementById("btnSaque");
 var auxPrimerSaque = 0;
 
 function primerSaque() {
