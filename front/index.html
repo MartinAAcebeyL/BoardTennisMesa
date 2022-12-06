@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tablero</title>
     <link rel="stylesheet" href="./static/css/static.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body>
@@ -63,9 +69,35 @@
     </main>
 
     <section class="modal" id="modal-minuto">
-      <p id="contenido-modal">
-        minuto
-      </p>
+      <p class="contenido-modal" id="contenido-modal-minuto">minuto</p>
+    </section>
+
+    <section class="modal" id="modal-envio">
+      <div class="contenido-modal-envio">
+        <header>
+          <div class="descripcion">
+            <h2>Women's Singles - Qualifying Round 2</h2>
+            <p>Aspire Ladies Sports Hall | Table 3</p>
+          </div>
+          <p id="sets">2-3</p>
+        </header>
+        <table id="marcador">
+          <tr id="primera-columna-marcador">
+            <td>
+              <img src="" alt="bandera equipo" class="img-equipo-envio" />
+            </td>
+            <td class="nombre-equipo-envio"></td>
+          </tr>
+          <tr id="segunda-columna-marcador">
+            <td>
+              <img src="" alt="bandera equipo" class="img-equipo-envio" />
+            </td>
+            <td class="nombre-equipo-envio"></td>
+          </tr>
+        </table>
+        <h3>Tiempo del partido <span id="tiempo-partido"></span></h3>
+        <button>Aceptar y enviar</button>
+      </div>
     </section>
 
     <script type="module" src="./static/js/consumoAPi.js"></script>
