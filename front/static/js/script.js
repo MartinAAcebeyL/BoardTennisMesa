@@ -10,8 +10,10 @@ let limite_sets = sets;
 let inicia_partido = localStorage.getItem('iniciar_partido') || false;
 let ultimo_juego = null;
 
+
 let array_puntos1 = [];
 let array_puntos2 = [];
+
 
 //reloj
 const reloj = document.querySelector("#reloj");
@@ -322,3 +324,43 @@ function contRojo2() {
 }
 Roja1.addEventListener("click", contRojo1);
 Roja2.addEventListener("click", contRojo2);
+
+//Ventana Modal
+const popup = document.querySelector('.popup');
+
+
+window.addEventListener('load', () => {
+    popup.classList.add('showPopup');
+    popup.childNodes[1].classList.add('showPopup');
+})
+
+//Primer saque
+var btnSaque = document.getElementById("btnSaque");
+var auxPrimerSaque = 0;
+
+function primerSaque() {
+    if (document.getElementById("inputEquipo1").checked) {
+        auxPrimerSaque = 1;
+        ocultar2();
+    } else if (document.getElementById("inputEquipo2").checked) {
+        auxPrimerSaque = 2;
+        ocultar1();
+    } else {
+        localStorage.clear();
+        location.reload();
+    }
+    popup.classList.remove('showPopup');
+    popup.childNodes[1].classList.remove('showPopup');
+    popup.style.display = 'none'
+}
+
+function ocultar1() {
+    document.getElementById('saque1').style.display = 'none';
+    document.getElementById('saque2').style.display = 'block';
+}
+
+function ocultar2() {
+    document.getElementById('saque2').style.display = 'none';
+    document.getElementById('saque1').style.display = 'block';
+}
+btnSaque.addEventListener("click", primerSaque);

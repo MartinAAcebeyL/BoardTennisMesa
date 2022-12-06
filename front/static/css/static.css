@@ -44,6 +44,43 @@ body {
     padding: 1rem .1rem;
 }
 
+
+/*Ventana modal*/
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, .3);
+    display: grid;
+    place-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 200ms ease-in-out opacity;
+}
+
+.popup-content {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .5);
+    border-radius: .5em;
+    opacity: 0;
+    transform: translateY(20%);
+    transition: 200ms ease-in-out opacity, 200ms ease-in-out transform;
+    position: relative;
+}
+
+.showPopup {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
 .equipos {
     padding: 0.5rem;
     width: 48%;
@@ -95,13 +132,13 @@ body {
     border-radius: 10%;
 }
 
-.equipos .saque1 {
+.equipos #saque1 {
     position: absolute;
     left: 80%;
     bottom: 3rem;
 }
 
-.equipos .saque2 {
+.equipos #saque2 {
     position: absolute;
     right: 80%;
     bottom: 3rem;
