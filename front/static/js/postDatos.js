@@ -24,7 +24,7 @@ function jsons(team, array_sets, targetas) {
         "nombre": team[1].textContent,
         "puntos": to_array_text(to_array(team.slice(2))),
         "sets": array_sets[0],
-        "targetas":{
+        "targetas": {
             "amarrillas": targetas.children[1].textContent,
             "rojas": targetas.children[0].textContent,
         }
@@ -45,4 +45,20 @@ function to_array_text(array) {
     return aux;
 }
 
-export default serializar;
+function post(json) {
+    const url = "http://localhost:3000/resultados"
+    fetch(url, {
+        method: "POST",
+
+        // Adding body or contents to send
+        body: JSON.stringify(json),
+
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(response => response.json())
+        .then(json => console.log(json));
+}
+
+export { serializar, post };

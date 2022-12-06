@@ -3,7 +3,7 @@ import {
     _equipo1 as equipo1,
     _equipo2 as equipo2,
 } from './factory.js';
-import serializar from './postDatos.js';
+import { serializar, post } from './postDatos.js';
 
 //varios
 let limite_puntos = 11;
@@ -215,10 +215,9 @@ minuto.addEventListener('click', correr_minuto);
 
 function mostrar_modal_finalizacion() {
     const modal = document.getElementById('modal-envio');
-    const table = document.getElementById('marcador');
     const primera_fila = document.getElementById("primera-columna-marcador");
-    const segunda_fila = document.getElementById("segunda-columna-marcador")
     const sets = document.getElementById("sets");
+    const segunda_fila = document.getElementById("segunda-columna-marcador")
     const tiempo_partido = document.getElementById("tiempo-partido");
 
     for (let i = 0; i < array_puntos1.length; i++) {
@@ -236,11 +235,28 @@ function mostrar_modal_finalizacion() {
 
     sets.textContent = `${localStorage.getItem(equipo1.sets_ls)}-${localStorage.getItem(equipo2.sets_ls)}`
     tiempo_partido.textContent = reloj.textContent;
-    let json = serializar(table, sets, tiempo_partido);
-    console.log(json)
+    
     modal.style.display = 'block';
 }
 
+//post de datos
+const bnt_envio = document.getElementById('btn-envio');
+
+function post_resultado() {
+    const table = document.getElementById('marcador');
+    const sets = document.getElementById("sets");
+    const tiempo_partido = document.getElementById("tiempo-partido");
+
+
+    let json = serializar(table, sets, tiempo_partido);
+    console.log('aqui')
+    while (localStorage.length > 0) {
+        localStorage.clear()
+    }
+    post(json)
+}   
+
+bnt_envio.addEventListener('click', post_resultado);
 //Tarjetas Amarillas
 var Amarilla1 = document.getElementById("Amarilla1");
 var Amarilla2 = document.getElementById("Amarilla2");
