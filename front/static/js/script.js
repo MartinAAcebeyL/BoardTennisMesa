@@ -99,7 +99,6 @@ function sumarPuntos(event) {
         limite_puntos = parseInt(equipo1.etiqueta_puntos.textContent) + 2;
     }
     sumarSets(this);
-    saquePartido();
 
 }
 
@@ -115,6 +114,10 @@ function actualizarPuntos() {
 puntos_equipos.forEach(el => el.addEventListener(
     'click', sumarPuntos
 ));
+puntos_equipos.forEach(el => el.addEventListener(
+    'click', saquePartido
+));
+
 
 //sets ganados
 function sumarSets(t) {
@@ -371,12 +374,10 @@ let k = 0;
 function primerSaque() {
     if (document.getElementById("inputEquipo1").checked) {
         auxPrimerSaque = 1;
-        k++;
         ocultar2();
     } else if (document.getElementById("inputEquipo2").checked) {
         auxPrimerSaque = 2;
         ocultar1();
-        k++;
     } else {
         localStorage.clear();
         location.reload();
@@ -396,23 +397,25 @@ function ocultar2() {
     document.getElementById('saque1').style.display = 'block';
 }
 btnSaque.addEventListener("click", primerSaque);
-//Saques del partido
-var punto1 = document.getElementById("punto1");
-var punto2 = document.getElementById("punto2");
-punto1.innerHTML = localStorage.getItem("punto1");
-punto2.innerHTML = localStorage.getItem("punto2");
-
+//saque Partido
 function saquePartido() {
+    k++;
     if (auxPrimerSaque == 1) {
-        for (k = 0; k <= 2; k++) {
-            ocultar2();
+        console.log("primer if", k);
+        ocultar2();
+        if (k > 2) {
+            k = 0;
+            auxPrimerSaque = 2;
+            console.log("primer if if", k);
         }
-        aux = 2;
     }
     if (auxPrimerSaque == 2) {
-        for (k = 0; k <= 2; k++) {
-            ocultar1();
+        console.log("seg if", k);
+        ocultar1();
+        if (k > 2) {
+            k = 0;
+            auxPrimerSaque = 1;
+            console.log("seg if if", k);
         }
-        aux = 1;
     }
 }
