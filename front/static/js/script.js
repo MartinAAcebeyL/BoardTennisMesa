@@ -283,6 +283,7 @@ function primerSaque() {
     }
     popup.classList.remove('showPopup');
     popup.childNodes[1].classList.remove('showPopup');
+    popup.style.display = 'none'
 }
 
 function ocultar1() {
@@ -294,5 +295,4 @@ function ocultar2() {
     document.getElementById('saque2').style.display = 'none';
     document.getElementById('saque1').style.display = 'block';
 }
-btnSaque.addEventListener("click", primerSaque);
 btnSaque.addEventListener("click", primerSaque);

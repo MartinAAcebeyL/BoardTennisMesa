@@ -14,7 +14,6 @@ async function getData() {
             nombre_equipo_modal[i].textContent = json.equipos[i]['equipo'];
         }
 
-        document.getElementById('catidad_sets').textContent = json.sets;
         return json.sets;
     } catch (error) {
         console.error(error);
