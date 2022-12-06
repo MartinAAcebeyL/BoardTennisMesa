@@ -72,19 +72,6 @@ body {
     position: relative;
 }
 
-.popup h1 {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    line-height: 1;
-    cursor: pointer;
-    user-select: none;
-}
-
-.popup h1:active {
-    transform: scale(.9);
-}
-
 .showPopup {
     opacity: 1;
     transform: translateY(0);
@@ -142,13 +129,13 @@ body {
     border-radius: 10%;
 }
 
-.equipos .saque1 {
+.equipos #saque1 {
     position: absolute;
     left: 80%;
     bottom: 3rem;
 }
 
-.equipos .saque2 {
+.equipos #saque2 {
     position: absolute;
     right: 80%;
     bottom: 3rem;
