@@ -1,9 +1,12 @@
 import { sets } from './consumoAPi.js';
 import {
-    _equipo1 as equipo1,
-    _equipo2 as equipo2,
+  _equipo1 as equipo1,
+  _equipo2 as equipo2,
 } from './factory.js';
-import { serializar, post } from './postDatos.js';
+import {
+  post,
+  serializar,
+} from './postDatos.js';
 
 //varios
 let limite_puntos = 11;
@@ -96,6 +99,8 @@ function sumarPuntos(event) {
         limite_puntos = parseInt(equipo1.etiqueta_puntos.textContent) + 2;
     }
     sumarSets(this);
+    saquePartido();
+
 }
 
 function actualizarPuntos() {
@@ -235,7 +240,7 @@ function mostrar_modal_finalizacion() {
 
     sets.textContent = `${localStorage.getItem(equipo1.sets_ls)}-${localStorage.getItem(equipo2.sets_ls)}`
     tiempo_partido.textContent = reloj.textContent;
-    
+
     modal.style.display = 'block';
 }
 
@@ -254,7 +259,7 @@ function post_resultado() {
         localStorage.clear()
     }
     post(json)
-}   
+}
 
 bnt_envio.addEventListener('click', post_resultado);
 //Tarjetas Amarillas
@@ -361,14 +366,17 @@ window.addEventListener('load', () => {
 //Primer saque
 var btnSaque = document.getElementById("btnSaque");
 var auxPrimerSaque = 0;
+let k = 0;
 
 function primerSaque() {
     if (document.getElementById("inputEquipo1").checked) {
         auxPrimerSaque = 1;
+        k++;
         ocultar2();
     } else if (document.getElementById("inputEquipo2").checked) {
         auxPrimerSaque = 2;
         ocultar1();
+        k++;
     } else {
         localStorage.clear();
         location.reload();
@@ -388,3 +396,23 @@ function ocultar2() {
     document.getElementById('saque1').style.display = 'block';
 }
 btnSaque.addEventListener("click", primerSaque);
+//Saques del partido
+var punto1 = document.getElementById("punto1");
+var punto2 = document.getElementById("punto2");
+punto1.innerHTML = localStorage.getItem("punto1");
+punto2.innerHTML = localStorage.getItem("punto2");
+
+function saquePartido() {
+    if (auxPrimerSaque == 1) {
+        for (k = 0; k <= 2; k++) {
+            ocultar2();
+        }
+        aux = 2;
+    }
+    if (auxPrimerSaque == 2) {
+        for (k = 0; k <= 2; k++) {
+            ocultar1();
+        }
+        aux = 1;
+    }
+}
