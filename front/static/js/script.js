@@ -99,7 +99,7 @@ function sumarPuntos(event) {
         limite_puntos = parseInt(equipo1.etiqueta_puntos.textContent) + 2;
     }
     sumarSets(this);
-
+    saquePartido();
 }
 
 function actualizarPuntos() {
@@ -114,9 +114,9 @@ function actualizarPuntos() {
 puntos_equipos.forEach(el => el.addEventListener(
     'click', sumarPuntos
 ));
-puntos_equipos.forEach(el => el.addEventListener(
-    'click', saquePartido
-));
+// puntos_equipos.forEach(el => el.addEventListener(
+//     'click', saquePartido
+// ));
 
 
 //sets ganados
@@ -368,23 +368,18 @@ window.addEventListener('load', () => {
 
 //Primer saque
 var btnSaque = document.getElementById("btnSaque");
-var auxPrimerSaque = 0;
-let k = 0;
+var equipo_saca = 0;
 
 function primerSaque() {
     if (document.getElementById("inputEquipo1").checked) {
-        auxPrimerSaque = 1;
-        saquePartido();
-    } else if (document.getElementById("inputEquipo2").checked) {
-        auxPrimerSaque = 2;
-        saquePartido();
+        equipo_saca = 1;
     } else {
-        localStorage.clear();
-        location.reload();
-    }
+        equipo_saca = 2;
+    } 
     popup.classList.remove('showPopup');
     popup.childNodes[1].classList.remove('showPopup');
     popup.style.display = 'none'
+    saquePartido();
 }
 
 function ocultar1() {
@@ -398,24 +393,25 @@ function ocultar2() {
 }
 btnSaque.addEventListener("click", primerSaque);
 //saque Partido
+let k = 0;
+
 function saquePartido() {
     k++;
-    if (auxPrimerSaque == 1) {
-        console.log("primer if", k);
+    if (equipo_saca == 1) {
+        console.log("team1", k);
         ocultar2();
-        if (k > 2) {
+        if (k >= 2) {
             k = 0;
-            auxPrimerSaque = 2;
-            console.log("primer if if", k);
+            equipo_saca = 2;
+            console.log("k: ", k);
         }
-    }
-    if (auxPrimerSaque == 2) {
+    }else{
         console.log("seg if", k);
         ocultar1();
-        if (k > 2) {
+        if (k >= 2) {
             k = 0;
-            auxPrimerSaque = 1;
-            console.log("seg if if", k);
+            equipo_saca = 1;
+            console.log("k: ", k);
         }
     }
 }
