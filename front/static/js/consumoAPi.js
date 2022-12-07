@@ -5,7 +5,7 @@ const nombre_equipos = document.querySelectorAll('.nombre-equipo');
 const nombre_equipo_modal = document.querySelectorAll('.nombre_equipo_modal');
 async function getData() {
     try {
-        let response = await fetch(base_url + '1');
+        let response = await fetch(base_url + '4');
         let json = await response.json();
         const imgs_envio = document.querySelectorAll('.img-equipo-envio');
         const nombres_envio = document.querySelectorAll('.nombre-equipo-envio');
