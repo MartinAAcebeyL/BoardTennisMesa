@@ -216,6 +216,64 @@
       },
       "tiempo": "00:00:37",
       "id": 4
+    },
+    {
+      "team1": {
+        "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "nombre": "Alexy Sdenka Taboada Chuve",
+        "puntos": [
+          "0",
+          "0"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "nombre": "Alejandra Perez",
+        "puntos": [
+          "11",
+          "11"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:21",
+      "id": 5
+    },
+    {
+      "team1": {
+        "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "nombre": "Alexy Sdenka Taboada Chuve",
+        "puntos": [
+          "9"
+        ],
+        "sets": "1",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "nombre": "Alejandra Perez",
+        "puntos": [
+          "11"
+        ],
+        "sets": "1",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:02:26",
+      "id": 6
     }
   ]
 }
