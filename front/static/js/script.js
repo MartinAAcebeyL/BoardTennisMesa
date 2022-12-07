@@ -374,10 +374,10 @@ let k = 0;
 function primerSaque() {
     if (document.getElementById("inputEquipo1").checked) {
         auxPrimerSaque = 1;
-        ocultar2();
+        saquePartido();
     } else if (document.getElementById("inputEquipo2").checked) {
         auxPrimerSaque = 2;
-        ocultar1();
+        saquePartido();
     } else {
         localStorage.clear();
         location.reload();
@@ -412,7 +412,7 @@ function saquePartido() {
     if (auxPrimerSaque == 2) {
         console.log("seg if", k);
         ocultar1();
-        if (k > 2) {
+        if (k >= 2) {
             k = 0;
             auxPrimerSaque = 1;
             console.log("seg if if", k);
