@@ -412,7 +412,7 @@ function saquePartido() {
     if (auxPrimerSaque == 2) {
         console.log("seg if", k);
         ocultar1();
-        if (k >= 2) {
+        if (k > 2) {
             k = 0;
             auxPrimerSaque = 1;
             console.log("seg if if", k);
