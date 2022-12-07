@@ -1,11 +1,11 @@
 import { sets } from './consumoAPi.js';
 import {
-  _equipo1 as equipo1,
-  _equipo2 as equipo2,
+    _equipo1 as equipo1,
+    _equipo2 as equipo2,
 } from './factory.js';
 import {
-  post,
-  serializar,
+    post,
+    serializar,
 } from './postDatos.js';
 
 //varios
@@ -375,7 +375,7 @@ function primerSaque() {
         equipo_saca = 1;
     } else {
         equipo_saca = 2;
-    } 
+    }
     popup.classList.remove('showPopup');
     popup.childNodes[1].classList.remove('showPopup');
     popup.style.display = 'none'
@@ -397,21 +397,32 @@ let k = 0;
 
 function saquePartido() {
     k++;
-    if (equipo_saca == 1) {
-        console.log("team1", k);
-        ocultar2();
-        if (k >= 2) {
-            k = 0;
+    if (equipo1.etiqueta_puntos.textContent >= 10 && equipo2.etiqueta_puntos.textContent >= 10) {
+        if (equipo_saca == 1) {
+            ocultar2();
             equipo_saca = 2;
-            console.log("k: ", k);
-        }
-    }else{
-        console.log("seg if", k);
-        ocultar1();
-        if (k >= 2) {
-            k = 0;
+        } else {
+            ocultar1();
             equipo_saca = 1;
-            console.log("k: ", k);
+        }
+    } else {
+        if (equipo_saca == 1) {
+            console.log("team1", k);
+            ocultar2();
+            if (k >= 2) {
+                k = 0;
+                equipo_saca = 2;
+                console.log("k: ", k);
+            }
+        } else {
+            console.log("seg if", k);
+            ocultar1();
+            if (k >= 2) {
+                k = 0;
+                equipo_saca = 1;
+                console.log("k: ", k);
+            }
         }
     }
+
 }
