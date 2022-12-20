@@ -1,285 +1,359 @@
 {
-    "1": {
-        "equipos": [{
-                "id": 1,
-                "nombre": "Carlos David",
-                "apellido": "Torres Fuentes",
-                "edad": 23,
-                "equipo": "UDAM",
-                "pais": "Argentina",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-LyYsg132xeIqueXMfQETeDGC_TbYoDXgjw&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW0aPvvy_Ia-FajTvV11dW8DND1MyCCZmoqg&usqp=CAU"
-            },
-            {
-                "id": 2,
-                "nombre": "Martin Andres",
-                "apellido": "Acebey Layme",
-                "edad": 21,
-                "equipo": "Table tennis for life",
-                "pais": "Estados Unidos",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4N7v4OQ0IlwTABbeH0jaTIZgdD5r9R0CPA&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04n-8PkHRVf357bOVd3okFXDfpfQhXv_VUQ&usqp=CAU"
-            }
-        ],
-        "sets": 7
+  "1": {
+    "equipos": [
+      {
+        "id": 1,
+        "nombre": "Carlos David",
+        "apellido": "Torres Fuentes",
+        "edad": 23,
+        "equipo": "UDAM",
+        "pais": "Argentina",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-LyYsg132xeIqueXMfQETeDGC_TbYoDXgjw&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW0aPvvy_Ia-FajTvV11dW8DND1MyCCZmoqg&usqp=CAU"
+      },
+      {
+        "id": 2,
+        "nombre": "Martin Andres",
+        "apellido": "Acebey Layme",
+        "edad": 21,
+        "equipo": "Table tennis for life",
+        "pais": "Estados Unidos",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4N7v4OQ0IlwTABbeH0jaTIZgdD5r9R0CPA&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04n-8PkHRVf357bOVd3okFXDfpfQhXv_VUQ&usqp=CAU"
+      }
+    ],
+    "sets": 7
+  },
+  "2": {
+    "equipos": [
+      {
+        "id": 1,
+        "nombre": "Alexy Sdenka",
+        "apellido": "Taboada Chuve",
+        "edad": 22,
+        "equipo": "UST",
+        "pais": "Bolivia",
+        "sets": 7,
+        "imagen_pais": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ZP5XkWfD5ii9E_C_MZej6vCu_YHiYuGs5Q&usqp=CAU"
+      },
+      {
+        "id": 2,
+        "nombre": "Alejandra",
+        "apellido": "Perez",
+        "edad": 32,
+        "equipo": "Tennis Club",
+        "pais": "Paraguay",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFRrIy5cO4wE4E7S8qu40GqfA_Q2oQrr45Q&usqp=CAU"
+      }
+    ],
+    "sets": 3
+  },
+  "3": {
+    "equipos": [
+      {
+        "id": 5,
+        "nombre": "Abril Jhoana",
+        "apellido": "Escalera",
+        "edad": 26,
+        "equipo": "Champion Tennis",
+        "pais": "Mexico",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRrJzLIUWWyfMetUbxjqL7SdUk0ILGC2vtXw&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY1qer0i4bRF93BcObWg3s_y570HbJBaZv-g&usqp=CAU"
+      },
+      {
+        "id": 6,
+        "nombre": "Jose",
+        "apellido": "Espinoza Martines",
+        "edad": 18,
+        "equipo": "Tenis de mesa",
+        "pais": "Brazil",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG-_3zdSMCQ0KvCsxitRg0fSa2FTTZWmU74A&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp_N-YqUdw0LYGE7KBGyXZWIdN3xI3AEiqHQ&usqp=CAU"
+      }
+    ],
+    "sets": 5
+  },
+  "4": {
+    "equipos": [
+      {
+        "id": 7,
+        "nombre": "Maria Jose",
+        "apellido": "Cuevas Calderon",
+        "edad": 25,
+        "equipo": "Magul",
+        "pais": "Venezuela",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiI-zvHwvoOFJeWIioS_w9oDYoCHWLfUqRrXQIjy-XRE8bmU0KQ27zwf947tWBSsaG3x4&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuD4G7w-iElWVfUyGdqGndilvDLWov0GLZNg&usqp=CAU"
+      },
+      {
+        "id": 8,
+        "nombre": "Carla Andrea",
+        "apellido": "Vaca Ortiz",
+        "edad": 36,
+        "equipo": "ITTF",
+        "pais": "España",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKec3K9N7EZiF3Of4eWakPnCVs8Wo0lRJk-bGFsNCvTcG26zuEbCLvek7nI6Pdzvjk_8&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt0RhreIq-XYMla3ovwpjA2fhx840zqDQYog&usqp=CAU"
+      }
+    ],
+    "sets": 5
+  },
+  "5": {
+    "equipos": [
+      {
+        "id": 9,
+        "nombre": "Karla",
+        "apellido": "Marques",
+        "edad": 18,
+        "equipo": "Viriato",
+        "pais": "Canada",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOqY_-hQjb07FvTA8BvFM-VO8IutgZbnT-iQ&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu_bwxcQMcXYzR4XmqfEHgB1aAOyyIuumFj7PYwbVSNI9YCx0Zm9qCDn6Lvwln9FNtmsQ&usqp=CAU"
+      },
+      {
+        "id": 10,
+        "nombre": "Miguel Angel",
+        "apellido": "Torrez Calderon",
+        "edad": 19,
+        "equipo": "Palos",
+        "pais": "India",
+        "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCI5KT9Qc9POUr7meF9AXV_0C2gm0BCamdcA&usqp=CAU",
+        "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyLyjOeCKCZfbnXpmdPKObKP5QCmmFqK1CmoJppeNaeL1V0vxkHv6sjxAQgn7WjceD6Kc&usqp=CAU"
+      }
+    ],
+    "sets": 7
+  },
+  "resultados": [
+    {
+      "id": 1
     },
-    "2": {
-        "equipos": [{
-                "id": 1,
-                "nombre": "Alexy Sdenka",
-                "apellido": "Taboada Chuve",
-                "edad": 22,
-                "equipo": "UST",
-                "pais": "Bolivia",
-                "sets": 7,
-                "imagen_pais": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ZP5XkWfD5ii9E_C_MZej6vCu_YHiYuGs5Q&usqp=CAU"
-            },
-            {
-                "id": 2,
-                "nombre": "Alejandra",
-                "apellido": "Perez",
-                "edad": 32,
-                "equipo": "Tennis Club",
-                "pais": "Paraguay",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFRrIy5cO4wE4E7S8qu40GqfA_Q2oQrr45Q&usqp=CAU"
-            }
+    {
+      "team1": {
+        "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "nombre": "Alexy Sdenka Taboada Chuve",
+        "puntos": [
+          "0"
         ],
-        "sets": 3
-    },
-    "3": {
-        "equipos": [{
-                "id": 5,
-                "nombre": "Abril Jhoana",
-                "apellido": "Escalera",
-                "edad": 26,
-                "equipo": "Champion Tennis",
-                "pais": "Mexico",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRrJzLIUWWyfMetUbxjqL7SdUk0ILGC2vtXw&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY1qer0i4bRF93BcObWg3s_y570HbJBaZv-g&usqp=CAU"
-            },
-            {
-                "id": 6,
-                "nombre": "Jose",
-                "apellido": "Espinoza Martines",
-                "edad": 18,
-                "equipo": "Tenis de mesa",
-                "pais": "Brazil",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG-_3zdSMCQ0KvCsxitRg0fSa2FTTZWmU74A&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp_N-YqUdw0LYGE7KBGyXZWIdN3xI3AEiqHQ&usqp=CAU"
-            }
-        ],
-        "sets": 5
-    },
-    "4": {
-        "equipos": [{
-                "id": 7,
-                "nombre": "Maria Jose",
-                "apellido": "Cuevas Calderon",
-                "edad": 25,
-                "equipo": "Magul",
-                "pais": "Venezuela",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiI-zvHwvoOFJeWIioS_w9oDYoCHWLfUqRrXQIjy-XRE8bmU0KQ27zwf947tWBSsaG3x4&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuD4G7w-iElWVfUyGdqGndilvDLWov0GLZNg&usqp=CAU"
-            },
-            {
-                "id": 8,
-                "nombre": "Carla Andrea",
-                "apellido": "Vaca Ortiz",
-                "edad": 36,
-                "equipo": "ITTF",
-                "pais": "España",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKec3K9N7EZiF3Of4eWakPnCVs8Wo0lRJk-bGFsNCvTcG26zuEbCLvek7nI6Pdzvjk_8&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt0RhreIq-XYMla3ovwpjA2fhx840zqDQYog&usqp=CAU"
-            }
-        ],
-        "sets": 5
-    },
-    "5": {
-        "equipos": [{
-                "id": 9,
-                "nombre": "Karla",
-                "apellido": "Marques",
-                "edad": 18,
-                "equipo": "Viriato",
-                "pais": "Canada",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOqY_-hQjb07FvTA8BvFM-VO8IutgZbnT-iQ&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu_bwxcQMcXYzR4XmqfEHgB1aAOyyIuumFj7PYwbVSNI9YCx0Zm9qCDn6Lvwln9FNtmsQ&usqp=CAU"
-            },
-            {
-                "id": 10,
-                "nombre": "Miguel Angel",
-                "apellido": "Torrez Calderon",
-                "edad": 19,
-                "equipo": "Palos",
-                "pais": "India",
-                "imagen_pais": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCI5KT9Qc9POUr7meF9AXV_0C2gm0BCamdcA&usqp=CAU",
-                "imagen_equipo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyLyjOeCKCZfbnXpmdPKObKP5QCmmFqK1CmoJppeNaeL1V0vxkHv6sjxAQgn7WjceD6Kc&usqp=CAU"
-            }
-        ],
-        "sets": 7
-    },
-    "resultados": [{
-            "id": 1
-        },
-        {
-            "team1": {
-                "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
-                "nombre": "Alexy Sdenka Taboada Chuve",
-                "puntos": [
-                    "0"
-                ],
-                "sets": "0",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "team2": {
-                "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
-                "nombre": "Alejandra Perez",
-                "puntos": [
-                    "11"
-                ],
-                "sets": "0",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "tiempo": "00:00:18",
-            "id": 2
-        },
-        {
-            "team1": {
-                "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
-                "nombre": "Alexy Sdenka Taboada Chuve",
-                "puntos": [
-                    "0"
-                ],
-                "sets": "0",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "team2": {
-                "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
-                "nombre": "Alejandra Perez",
-                "puntos": [
-                    "11"
-                ],
-                "sets": "0",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "tiempo": "00:00:18",
-            "id": 3
-        },
-        {
-            "team1": {
-                "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
-                "nombre": "Alexy Sdenka Taboada Chuve",
-                "puntos": [
-                    "5",
-                    "11",
-                    "11"
-                ],
-                "sets": "2",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "team2": {
-                "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
-                "nombre": "Alejandra Perez",
-                "puntos": [
-                    "11",
-                    "8",
-                    "4"
-                ],
-                "sets": "2",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "tiempo": "00:00:37",
-            "id": 4
-        },
-        {
-            "team1": {
-                "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
-                "nombre": "Alexy Sdenka Taboada Chuve",
-                "puntos": [
-                    "0",
-                    "0"
-                ],
-                "sets": "0",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "team2": {
-                "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
-                "nombre": "Alejandra Perez",
-                "puntos": [
-                    "11",
-                    "11"
-                ],
-                "sets": "0",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "tiempo": "00:00:21",
-            "id": 5
-        },
-        {
-            "team1": {
-                "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-LyYsg132xeIqueXMfQETeDGC_TbYoDXgjw&usqp=CAU",
-                "nombre": "Carlos David Torres Fuentes",
-                "puntos": [
-                    "11",
-                    "14",
-                    "0",
-                    "13",
-                    "15",
-                    "11",
-                    "18"
-                ],
-                "sets": "4",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "team2": {
-                "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4N7v4OQ0IlwTABbeH0jaTIZgdD5r9R0CPA&usqp=CAU",
-                "nombre": "Martin Andres Acebey Layme",
-                "puntos": [
-                    "8",
-                    "16",
-                    "11",
-                    "15",
-                    "13",
-                    "0",
-                    "16"
-                ],
-                "sets": "4",
-                "targetas": {
-                    "amarrillas": "0",
-                    "rojas": "0"
-                }
-            },
-            "tiempo": "00:04:07",
-            "id": 6
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
         }
-    ]
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "nombre": "Alejandra Perez",
+        "puntos": [
+          "11"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:18",
+      "id": 2
+    },
+    {
+      "team1": {
+        "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "nombre": "Alexy Sdenka Taboada Chuve",
+        "puntos": [
+          "0"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "nombre": "Alejandra Perez",
+        "puntos": [
+          "11"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:18",
+      "id": 3
+    },
+    {
+      "team1": {
+        "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "nombre": "Alexy Sdenka Taboada Chuve",
+        "puntos": [
+          "5",
+          "11",
+          "11"
+        ],
+        "sets": "2",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "nombre": "Alejandra Perez",
+        "puntos": [
+          "11",
+          "8",
+          "4"
+        ],
+        "sets": "2",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:37",
+      "id": 4
+    },
+    {
+      "team1": {
+        "bandera": "https://vignette.wikia.nocookie.net/doblaje/images/3/32/Bandera_Bolivia.png/revision/latest?cb=20101027211330&path-prefix=es",
+        "nombre": "Alexy Sdenka Taboada Chuve",
+        "puntos": [
+          "0",
+          "0"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1FjAfurm5Ekm8IbaGor8MsU8eY6DIiT8csg&usqp=CAU",
+        "nombre": "Alejandra Perez",
+        "puntos": [
+          "11",
+          "11"
+        ],
+        "sets": "0",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:21",
+      "id": 5
+    },
+    {
+      "team1": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-LyYsg132xeIqueXMfQETeDGC_TbYoDXgjw&usqp=CAU",
+        "nombre": "Carlos David Torres Fuentes",
+        "puntos": [
+          "11",
+          "14",
+          "0",
+          "13",
+          "15",
+          "11",
+          "18"
+        ],
+        "sets": "4",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4N7v4OQ0IlwTABbeH0jaTIZgdD5r9R0CPA&usqp=CAU",
+        "nombre": "Martin Andres Acebey Layme",
+        "puntos": [
+          "8",
+          "16",
+          "11",
+          "15",
+          "13",
+          "0",
+          "16"
+        ],
+        "sets": "4",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:04:07",
+      "id": 6
+    },
+    {
+      "team1": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiI-zvHwvoOFJeWIioS_w9oDYoCHWLfUqRrXQIjy-XRE8bmU0KQ27zwf947tWBSsaG3x4&usqp=CAU",
+        "nombre": "Maria Jose Cuevas Calderon",
+        "puntos": [
+          "7",
+          "11",
+          "11",
+          "1",
+          "13"
+        ],
+        "sets": "3",
+        "targetas": {
+          "amarrillas": "1",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKec3K9N7EZiF3Of4eWakPnCVs8Wo0lRJk-bGFsNCvTcG26zuEbCLvek7nI6Pdzvjk_8&usqp=CAU",
+        "nombre": "Carla Andrea Vaca Ortiz",
+        "puntos": [
+          "11",
+          "0",
+          "0",
+          "11",
+          "11"
+        ],
+        "sets": "3",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:34",
+      "id": 7
+    },
+    {
+      "team1": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiI-zvHwvoOFJeWIioS_w9oDYoCHWLfUqRrXQIjy-XRE8bmU0KQ27zwf947tWBSsaG3x4&usqp=CAU",
+        "nombre": "Maria Jose Cuevas Calderon",
+        "puntos": [
+          "13",
+          "11",
+          "11"
+        ],
+        "sets": "3",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKec3K9N7EZiF3Of4eWakPnCVs8Wo0lRJk-bGFsNCvTcG26zuEbCLvek7nI6Pdzvjk_8&usqp=CAU",
+        "nombre": "Carla Andrea Vaca Ortiz",
+        "puntos": [
+          "11",
+          "0",
+          "0"
+        ],
+        "sets": "3",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:03:38",
+      "id": 8
+    }
+  ]
 }
