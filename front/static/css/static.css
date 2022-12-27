@@ -11,22 +11,21 @@
 
 body {
     margin: 0;
-    height: 100%;
-    width: 100%;
-    padding: .2rem 0.2rem;
+    max-height: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #tablero {
     color: white;
-    padding: .6rem 1rem;
+    padding: .3rem .8rem;
     border: .1rem solid var(--Blue-Grotto);
-    border-radius: .3rem;
     background: var(--Negro);
     width: 100%;
-    height: 98vh;
+    height: 100vh;
 }
 
 #tablero #top {
@@ -39,16 +38,18 @@ body {
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 0px #fff, 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229), 0 0 1px rgb(137, 205, 229);
 }
 
-/* #tablero #controls{
-    height: 50%;
-    max-height: 70%;
-} */
-
-#tablero #controls #touch {
-    font-size: 1.8rem;
+.head-team {
+    width: 40%;
     display: flex;
     justify-content: space-between;
-    padding: .1rem .1rem;
+    align-items: center;
+    text-align: right;
+}
+
+#tablero #controls #touch {
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -186,6 +187,13 @@ body {
     padding: .5rem .5rem;
     padding: .3rem .6rem;
     font-size: 1.4rem;
+}
+
+#tablero>footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem .3rem;
 }
 
 /* modales */

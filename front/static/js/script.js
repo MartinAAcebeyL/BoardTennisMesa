@@ -124,6 +124,7 @@ function sumarSets(t) {
             actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
         }
         ultimo_juego = null
+        minuto.forEach(el => el.style.display = "block");
     }
 }
 
@@ -181,39 +182,35 @@ function atras(event) {
 flecha.addEventListener('click', atras)
 
 //minuto
-const minuto = document.querySelector('#minuto');
+const minuto = document.querySelectorAll('.minuto');
 
 function correr_minuto(event) {
     const modal = document.getElementById("modal-minuto");
     const contenido = document.getElementById("contenido-modal-minuto");
-    let minuto_presionado = localStorage.getItem("minuto_presionado") || localStorage.setItem("minuto_presionado", false);
 
-    if (localStorage.getItem("minuto_presionado") == 'false') {
-        minuto_presionado = localStorage.setItem("minuto_presionado", true);
-        let min = 59;
-        modal.style.display = 'block';
-        localStorage.setItem('reloj_activado', false);
-        clearTimeout(t);
-        let tiempo = setInterval(() => {
-            contenido.textContent = min;
-            min--;
-            if (min < 10)
-                contenido.style.color = "red";
-            else
-                contenido.style.color = "black";
+    let min = 5;
+    modal.style.display = 'block';
+    localStorage.setItem('reloj_activado', false);
+    clearTimeout(t);
+    let tiempo = setInterval(() => {
+        contenido.textContent = min;
+        min--;
+        if (min < 10)
+            contenido.style.color = "red";
+        else
+            contenido.style.color = "black";
 
-            if (min == 0) {
-                console.log(min)
-                clearTimeout(tiempo);
-                modal.style.display = 'none';
-                localStorage.setItem('reloj_activado', true);
-                timer()
-            }
-        }, 1000)
-        contenido.textContent = '';
-    }
+        if (min == 0) {
+            clearTimeout(tiempo);
+            modal.style.display = 'none';
+            localStorage.setItem('reloj_activado', true);
+            timer()
+        }
+    }, 1000)
+    contenido.textContent = '';
+    this.style.display = 'none';
 }
-minuto.addEventListener('click', correr_minuto);
+minuto.forEach(el => el.addEventListener('click', correr_minuto));
 
 // modal de envio de datos
 
@@ -253,7 +250,6 @@ function post_resultado() {
 
 
     let json = serializar(table, sets, tiempo_partido);
-    console.log('aqui')
     while (localStorage.length > 0) {
         localStorage.clear()
     }
