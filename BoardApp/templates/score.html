@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        width: 100%;
+        height: 100%;
+      }
+      td {
+        border: 1px solid black;
+      }
+      .banderas {
+        width: 50px;
+        height: 50px;
+      }
+      .nombres {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td class="banderas" id="bandera1"><img src="" alt="" /></td>
+          <td class="nombres" id="nombre1">0</td>
+          <td class="sets" id="set1">0</td>
+          <td class="puntos">0</td>
+        </tr>
+        <tr>
+          <td class="banderas" id="bandera2"><img src="" alt="" /></td>
+          <td class="nombres" id="nombre2">0</td>
+          <td class="sets" id="set2">0</td>
+          <td class="puntos">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
+      integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      var socket = io();
+
+      socket.on("inicio", function (json) {
+        const nombres = document.querySelectorAll(".nombres");
+        const banderas = document.querySelectorAll(".banderas");
+
+        for (let i = 0; i < nombres.length; i++) {
+          nombres[i].innerHTML = json[i].nombre;
+          banderas[i].innerHTML = `<img src="${json[i].bandera}" alt="imagen${
+            i + 1
+          }" />`;
+        }
+      });
+
+      socket.on("puntos", function (datos) {
+        let puntos = document.querySelectorAll(".puntos");
+        let array_datos = datos.split(":");
+        if (array_datos[0] == 1) {
+          puntos[0].innerHTML = array_datos[1];
+        } else {
+          puntos[1].innerHTML = array_datos[1];
+        }
+      });
+
+      socket.on("set", function (datos) {
+        let sets = document.querySelectorAll(".sets");
+        let array_datos = datos.split(":");
+        if (array_datos[0] == 1) {
+          sets[0].innerHTML = array_datos[1];
+        } else {
+          sets[1].innerHTML = array_datos[1];
+        }
+        let puntos = document.querySelectorAll(".puntos");
+        puntos.forEach(el => el.classList.remove("puntos"));
+
+        const tr = document.getElementsByTagName("tr");
+        console.log(tr);
+        for (let i = 0; i < tr.length; i++) {
+            tr[i].insertAdjacentHTML("beforeend", "<td class='puntos'>0</td>");
+        }
+    });
+    </script>
+  </body>
+</html>

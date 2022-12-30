@@ -87,10 +87,14 @@ function sumarPuntos(event) {
         puntos_actuales = parseInt(localStorage.getItem(equipo1.puntos_ls));
         localStorage.setItem(equipo1.puntos_ls, ++puntos_actuales);
         ultimo_juego = equipo1;
+        //socket para aumentar puntos al equipo 1
+        socket.emit('puntos', "1:" + localStorage.getItem(equipo1.puntos_ls));
     } else {
         puntos_actuales = parseInt(localStorage.getItem(equipo2.puntos_ls));
         localStorage.setItem(equipo2.puntos_ls, ++puntos_actuales);
         ultimo_juego = equipo2;
+        //socket para aumentar puntos al equipo 2
+        socket.emit('puntos', "2:" + localStorage.getItem(equipo2.puntos_ls));
     }
     this.textContent = puntos_actuales.toString();
     if (equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1) {
@@ -120,8 +124,10 @@ function sumarSets(t) {
         array_puntos2.push(localStorage.getItem(equipo2.puntos_ls));
         if (t == equipo1.etiqueta_puntos) {
             actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
+            socket.emit('set', "1:" + localStorage.getItem('sets-equipo-1'));
         } else {
             actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
+            socket.emit('set', "2:" + localStorage.getItem('sets-equipo-2'));
         }
         ultimo_juego = null
         minuto.forEach(el => el.style.display = "block");
@@ -421,4 +427,26 @@ function set_saque() {
     } else {
         equipo_saca = 1;
     }
+}
+
+//websockets
+var socket = io();
+
+socket.on('connect', function () {
+    const nombres = document.querySelectorAll(".nombre-equipo");
+    const banderas = document.querySelectorAll(".img-equipo");
+    let json = construir_json_sockets(nombres, banderas);
+
+    socket.emit('inicio', json);
+});
+
+function construir_json_sockets(nombres, banderas) {
+    let json = {};
+    for (let i = 0; i < nombres.length; i++) {
+        json[i] = {
+            nombre: nombres[i].textContent,
+            bandera: banderas[i].src
+        };
+    }
+    return json;
 }
