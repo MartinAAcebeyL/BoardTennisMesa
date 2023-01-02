@@ -1,6 +1,10 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 
+import mimetypes
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('text/css', '.css')
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socket = SocketIO(app=app)
