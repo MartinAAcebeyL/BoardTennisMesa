@@ -12,9 +12,11 @@ async function getData() {
 
         for (let i = 0; i < imgs.length; i++) {
             imgs[i].src = `${json.equipos[i]['imagen_pais']}`;
-            nombre_equipos[i].textContent = json.equipos[i]['equipo'];
+            let nombre = json.equipos[i]['apellido'].split(" ")[0] + " " + json.equipos[i]['nombre'].split(" ")[0].slice(0, 1) + ".";
+            
+            nombre_equipos[i].textContent = nombre;
 
-            nombre_equipo_modal[i].textContent = json.equipos[i]['equipo'];
+            nombre_equipo_modal[i].textContent = nombre;
             //envio
             imgs_envio[i].src = `${json.equipos[i]['imagen_pais']}`;
             nombres_envio[i].textContent = json.equipos[i]['nombre'] + " " + json.equipos[i]['apellido'];

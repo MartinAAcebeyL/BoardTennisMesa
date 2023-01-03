@@ -386,6 +386,42 @@
       },
       "tiempo": "00:01:46",
       "id": 9
+    },
+    {
+      "team1": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiI-zvHwvoOFJeWIioS_w9oDYoCHWLfUqRrXQIjy-XRE8bmU0KQ27zwf947tWBSsaG3x4&usqp=CAU",
+        "nombre": "Maria Jose Cuevas Calderon",
+        "puntos": [
+          "9",
+          "11",
+          "12",
+          "7",
+          "11"
+        ],
+        "sets": "3",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "team2": {
+        "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKec3K9N7EZiF3Of4eWakPnCVs8Wo0lRJk-bGFsNCvTcG26zuEbCLvek7nI6Pdzvjk_8&usqp=CAU",
+        "nombre": "Carla Andrea Vaca Ortiz",
+        "puntos": [
+          "11",
+          "7",
+          "10",
+          "11",
+          "7"
+        ],
+        "sets": "3",
+        "targetas": {
+          "amarrillas": "0",
+          "rojas": "0"
+        }
+      },
+      "tiempo": "00:00:56",
+      "id": 10
     }
   ]
 }

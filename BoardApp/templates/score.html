@@ -4,31 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      table {
-        width: 100%;
-        height: 100%;
-      }
-      td {
-        border: 1px solid black;
-      }
-      .banderas {
-        width: 50px;
-        height: 50px;
-      }
-      .nombres {
-        width: 100px;
-      }
-    </style>
+    <title>Score</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/score.css')}}"
+    />
   </head>
   <body>
     <table>
+      <thead>
+        <tr>
+          <th colspan="2"></th>
+          <th>Set</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
           <td class="banderas" id="bandera1"><img src="" alt="" /></td>
@@ -85,14 +75,14 @@
           sets[1].innerHTML = array_datos[1];
         }
         let puntos = document.querySelectorAll(".puntos");
-        puntos.forEach(el => el.classList.remove("puntos"));
+        puntos.forEach((el) => el.classList.remove("puntos"));
 
         const tr = document.getElementsByTagName("tr");
         console.log(tr);
-        for (let i = 0; i < tr.length; i++) {
-            tr[i].insertAdjacentHTML("beforeend", "<td class='puntos'>0</td>");
+        for (let i = 1; i < tr.length; i++) {
+          tr[i].insertAdjacentHTML("beforeend", "<td class='puntos'>0</td>");
         }
-    });
+      });
     </script>
   </body>
 </html>
