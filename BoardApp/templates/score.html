@@ -66,6 +66,17 @@
         }
       });
 
+      socket.on("saque", function (saca) {
+        let nombres = document.querySelectorAll(".nombres");
+        if(saca==1){
+          nombres[0].style.color = "white";
+          nombres[1].style.color = "black";
+        }else{
+          nombres[0].style.color = "black";
+          nombres[1].style.color = "white";
+        }
+      });
+
       socket.on("set", function (datos) {
         let sets = document.querySelectorAll(".sets");
         let array_datos = datos.split(":");
@@ -78,7 +89,6 @@
         puntos.forEach((el) => el.classList.remove("puntos"));
 
         const tr = document.getElementsByTagName("tr");
-        console.log(tr);
         for (let i = 1; i < tr.length; i++) {
           tr[i].insertAdjacentHTML("beforeend", "<td class='puntos'>0</td>");
         }

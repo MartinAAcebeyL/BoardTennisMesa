@@ -42,5 +42,11 @@ def puntos(puntos):
     emit('set', puntos, broadcast=True)
 
 
+@socket.on('saque')
+def cambio_saque(saca):
+    equipo_saca = saca.split(':')[1]
+    emit('saque', equipo_saca, broadcast=True)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

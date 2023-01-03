@@ -124,10 +124,12 @@ function sumarSets(t) {
         array_puntos2.push(localStorage.getItem(equipo2.puntos_ls));
         if (t == equipo1.etiqueta_puntos) {
             actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
-            socket.emit('set', "1:" + localStorage.getItem('sets-equipo-1'));
+            if (!(equipo1.etiqueta_sets.textContent >= limite_sets / 2)) 
+                socket.emit('set', "1:" + localStorage.getItem('sets-equipo-1'));
         } else {
             actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
-            socket.emit('set', "2:" + localStorage.getItem('sets-equipo-2'));
+            if (!(equipo2.etiqueta_sets.textContent >= limite_sets / 2)) 
+                socket.emit('set', "2:" + localStorage.getItem('sets-equipo-2'));
         }
         ultimo_juego = null
         minuto.forEach(el => el.style.display = "block");
@@ -145,12 +147,10 @@ function actualiar_set(set_equipo, equipo) {
 }
 
 function alguien_gano(t) {
-    const sets_equipos = document.querySelectorAll(".sets");
     if (t.textContent >= limite_sets / 2) {
-        sets_equipos[0] == t ? alert("the winner team 1") : alert("the winner team 2");
         localStorage.setItem('reloj_activado', false);
         clearTimeout(t);
-        mostrar_modal_finalizacion()
+        mostrar_modal_finalizacion();
     }
 }
 
@@ -367,66 +367,70 @@ window.addEventListener('load', () => {
 //Primer saque
 var btnSaque = document.getElementById("btnSaque");
 var equipo_saca = 0;
+var ultimoSaque = 0;
 
 function primerSaque() {
-    if (document.getElementById("inputEquipo1").checked) {
-        equipo_saca = 1;
-    } else {
-        equipo_saca = 2;
-    }
+    document.getElementById("inputEquipo1").checked ? equipo_saca = 1 : equipo_saca = 2;
+    ultimoSaque = equipo_saca;
+
     popup.classList.remove('showPopup');
     popup.childNodes[1].classList.remove('showPopup');
     popup.style.display = 'none'
     saquePartido();
 }
 
-function ocultar1() {
-    document.getElementById('saque1').style.display = 'none';
-    document.getElementById('saque2').style.display = 'block';
-}
-
-function ocultar2() {
-    document.getElementById('saque2').style.display = 'none';
-    document.getElementById('saque1').style.display = 'block';
+function ocultar_saque_equipo(equipo) {
+    if (equipo == 1) {
+        document.getElementById('saque1').style.display = 'none';
+        document.getElementById('saque2').style.display = 'block';
+        socket.emit('saque', "saca:2");
+    } else {
+        document.getElementById('saque2').style.display = 'none';
+        document.getElementById('saque1').style.display = 'block';
+        socket.emit('saque', "saca:1");
+    }
 }
 btnSaque.addEventListener("click", primerSaque);
 
 //saque Partido
-let k = 0;
+let cantidad_saques = 0;
 
 function saquePartido() {
-    k++;
-    if (equipo1.etiqueta_puntos.textContent >= 10 && equipo2.etiqueta_puntos.textContent >= 10) {
+    cantidad_saques++;
+
+    let pts_ambos_equipos_mayores_10 = equipo1.etiqueta_puntos.textContent >= 10 &&
+        equipo2.etiqueta_puntos.textContent >= 10
+
+    if (pts_ambos_equipos_mayores_10) {
+        //cuando los dos equipos tienen 10 puntos o más
         if (equipo_saca == 1) {
-            ocultar2();
+            ocultar_saque_equipo(2);
             equipo_saca = 2;
         } else {
-            ocultar1();
+            ocultar_saque_equipo(1);
             equipo_saca = 1;
         }
     } else {
         if (equipo_saca == 1) {
-            ocultar2();
-            if (k >= 2) {
-                k = 0;
+            ocultar_saque_equipo(2);
+            if (cantidad_saques == 2) {
                 equipo_saca = 2;
+                cantidad_saques = 0;
             }
         } else {
-            ocultar1();
-            if (k >= 2) {
-                k = 0;
+            ocultar_saque_equipo(1);
+            if (cantidad_saques == 2) {
                 equipo_saca = 1;
+                cantidad_saques = 0;
             }
         }
     }
 }
 
 function set_saque() {
-    if (equipo_saca == 1) {
-        equipo_saca = 2;
-    } else {
-        equipo_saca = 1;
-    }
+    ultimoSaque == 1 ? equipo_saca = 2 : equipo_saca = 1;
+    cantidad_saques = 0;
+    ultimoSaque = equipo_saca;
 }
 
 //websockets
