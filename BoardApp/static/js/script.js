@@ -10,6 +10,7 @@ import {
 
 //varios
 let limite_puntos = 11;
+let cantidad_saques = 1;
 let limite_sets = sets;
 let inicia_partido = localStorage.getItem('iniciar_partido') || false;
 let ultimo_juego = null;
@@ -82,29 +83,43 @@ function timer() {
 const puntos_equipos = document.querySelectorAll(".puntos");
 
 function sumarPuntos(event) {
+    console.log("aux_cambio_saque: " + aux_cambio_saque);
     let puntos_actuales;
+
     if (equipo1.etiqueta_puntos == event.target) {
         puntos_actuales = parseInt(localStorage.getItem(equipo1.puntos_ls));
         localStorage.setItem(equipo1.puntos_ls, ++puntos_actuales);
         ultimo_juego = equipo1;
+        retrocedio_puntos_equipo1 = false;
         //socket para aumentar puntos al equipo 1
         socket.emit('puntos', "1:" + localStorage.getItem(equipo1.puntos_ls));
     } else {
         puntos_actuales = parseInt(localStorage.getItem(equipo2.puntos_ls));
         localStorage.setItem(equipo2.puntos_ls, ++puntos_actuales);
         ultimo_juego = equipo2;
+        retrocedio_puntos_equipo2 = false;
         //socket para aumentar puntos al equipo 2
         socket.emit('puntos', "2:" + localStorage.getItem(equipo2.puntos_ls));
     }
     this.textContent = puntos_actuales.toString();
-    if (equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1) {
+
+    let cambiar_limite_puntos = equipo1.etiqueta_puntos.textContent == limite_puntos - 1 && equipo2.etiqueta_puntos.textContent == limite_puntos - 1;
+
+    if (cambiar_limite_puntos) {
         limite_puntos = parseInt(equipo1.etiqueta_puntos.textContent) + 2;
     }
+    if (aux_cambio_saque) {
+        aux_cambio_saque = false;
+    }
+
+    console.log("cantidad saques: " + cantidad_saques);
+    console.log("\n");
+
     sumarSets(this);
     saquePartido();
 }
 
-function actualizarPuntos() {
+function actualizarPuntosA0() {
     puntos_equipos.forEach(
         el => el.textContent = 0
     )
@@ -124,14 +139,17 @@ function sumarSets(t) {
         array_puntos2.push(localStorage.getItem(equipo2.puntos_ls));
         if (t == equipo1.etiqueta_puntos) {
             actualiar_set(equipo1.sets_ls, equipo1.etiqueta_sets);
-            if (!(equipo1.etiqueta_sets.textContent >= limite_sets / 2)) 
+            //si el equipo 1 no ha ganado el partido se envia mensaje por socket
+            if (!(equipo1.etiqueta_sets.textContent >= limite_sets / 2))
                 socket.emit('set', "1:" + localStorage.getItem('sets-equipo-1'));
         } else {
             actualiar_set(equipo2.sets_ls, equipo2.etiqueta_sets);
-            if (!(equipo2.etiqueta_sets.textContent >= limite_sets / 2)) 
+            //si el equipo 1 no ha ganado el partido se envia mensaje por socket
+            if (!(equipo2.etiqueta_sets.textContent >= limite_sets / 2))
                 socket.emit('set', "2:" + localStorage.getItem('sets-equipo-2'));
         }
-        ultimo_juego = null
+        ultimo_juego = null;
+        //si se cambia de sets, se vuelve a mostrar para pedir minuto
         minuto.forEach(el => el.style.display = "block");
     }
 }
@@ -140,10 +158,10 @@ function actualiar_set(set_equipo, equipo) {
     let sets_actuales = parseInt(localStorage.getItem(set_equipo));
     localStorage.setItem(set_equipo, ++sets_actuales);
     equipo.textContent = sets_actuales.toString();
-    localStorage.setItem("minuto_presionado", false)
     alguien_gano(equipo);
-    actualizarPuntos();
+    actualizarPuntosA0();
     set_saque();
+    cantidad_saques = 0;
 }
 
 function alguien_gano(t) {
@@ -175,18 +193,78 @@ if (localStorage.length > 0) {
 }
 
 //volver atras
-const flecha = document.querySelector('#atras');
+const atras = document.querySelectorAll(".atras")
 
-function atras(event) {
-    if (ultimo_juego != null) {
+let retrocedio_puntos_equipo1 = false;
+let retrocedio_puntos_equipo2 = false;
+
+function retroceder_puntos(event) {
+    let puntos_equipo1 = parseInt(localStorage.getItem(equipo1.puntos_ls));
+    let puntos_equipo2 = parseInt(localStorage.getItem(equipo2.puntos_ls));
+    if (aux_cambio_saque == true && !(puntos_equipo1 >= 10 && puntos_equipo2 >= 10)) {
+        console.log("cambio de saque")
+        let paraCambiar = ultimo_juego.nombre.split("-")[1];
+        if (paraCambiar == "1") {
+            ocultar_saque_equipo(1);
+            equipo_saca = 2;
+        } else {
+            ocultar_saque_equipo(2);
+            equipo_saca = 1;
+        }
+
+        cantidad_saques = 2;
         let aux = ultimo_juego.etiqueta_puntos.textContent--;
         localStorage.setItem(ultimo_juego.puntos_ls, --aux);
+        return;
+    }
+    if (puntos_equipo1 >= 10 && puntos_equipo2 >= 10) {
+        if (this == atras[0]) {
+            ocultar_saque_equipo(1);
+            let aux = equipo1.etiqueta_puntos.textContent--;
+            localStorage.setItem(equipo1.puntos_ls, --aux);
+            equipo_saca = 1;
+        } else {
+            ocultar_saque_equipo(2);
+            let aux = equipo2.etiqueta_puntos.textContent--;
+            localStorage.setItem(equipo2.puntos_ls, --aux);
+            equipo_saca = 2;
+        }
+    } else {
+        if (puntos_equipo1 > 0 && this == atras[0] && !retrocedio_puntos_equipo1) {
+            let aux = equipo1.etiqueta_puntos.textContent--;
+            localStorage.setItem(equipo1.puntos_ls, --aux);
+            cantidad_saques--;
+            retrocedio_puntos_equipo1 = true;
+        }
+
+        if (puntos_equipo2 > 0 && this == atras[1] && !retrocedio_puntos_equipo2) {
+            let aux = equipo2.etiqueta_puntos.textContent--;
+            localStorage.setItem(equipo2.puntos_ls, --aux);
+            cantidad_saques--;
+            retrocedio_puntos_equipo2 = true;
+        }
     }
     ultimo_juego = null;
 }
 
-flecha.addEventListener('click', atras)
+atras.forEach(el => el.addEventListener('click', retroceder_puntos));
+//devolver saque
+const devolver_saque = document.querySelectorAll(".devolver_saque");
+function devolver_saque_equipo(event) {
+    console.log("devoler saque")
+    if (this == devolver_saque[0]) {
+        ocultar_saque_equipo(1);
+        equipo_saca = 2;
+    } else {
+        ocultar_saque_equipo(2);
+        equipo_saca = 1;
+    }
+    cantidad_saques = 3;
+    aux_cambio_saque = false;
+    ultimo_juego = null;
+}
 
+devolver_saque.forEach(el => el.addEventListener('click', devolver_saque_equipo));
 //minuto
 const minuto = document.querySelectorAll('.minuto');
 
@@ -219,7 +297,6 @@ function correr_minuto(event) {
 minuto.forEach(el => el.addEventListener('click', correr_minuto));
 
 // modal de envio de datos
-
 function mostrar_modal_finalizacion() {
     const modal = document.getElementById('modal-envio');
     const primera_fila = document.getElementById("primera-columna-marcador");
@@ -376,10 +453,14 @@ function primerSaque() {
     popup.classList.remove('showPopup');
     popup.childNodes[1].classList.remove('showPopup');
     popup.style.display = 'none'
-    saquePartido();
+
+    equipo_saca == 1 ? ocultar_saque_equipo(2) : ocultar_saque_equipo(1);
 }
 
 function ocultar_saque_equipo(equipo) {
+    let puntos_equipo1 = parseInt(localStorage.getItem(equipo1.puntos_ls));
+    let puntos_equipo2 = parseInt(localStorage.getItem(equipo2.puntos_ls));
+
     if (equipo == 1) {
         document.getElementById('saque1').style.display = 'none';
         document.getElementById('saque2').style.display = 'block';
@@ -389,20 +470,16 @@ function ocultar_saque_equipo(equipo) {
         document.getElementById('saque1').style.display = 'block';
         socket.emit('saque', "saca:1");
     }
+    if (puntos_equipo2 > 0 || puntos_equipo1 > 0)
+        aux_cambio_saque = true;
 }
 btnSaque.addEventListener("click", primerSaque);
+let aux_cambio_saque = false;
 
 //saque Partido
-let cantidad_saques = 0;
-
-function saquePartido() {
-    cantidad_saques++;
-
-    let pts_ambos_equipos_mayores_10 = equipo1.etiqueta_puntos.textContent >= 10 &&
-        equipo2.etiqueta_puntos.textContent >= 10
-
-    if (pts_ambos_equipos_mayores_10) {
-        //cuando los dos equipos tienen 10 puntos o más
+function saque_ambos_pts_mayor_10() {
+    if (equipo1.etiqueta_puntos.textContent == 10 &&
+        equipo2.etiqueta_puntos.textContent == 10) {
         if (equipo_saca == 1) {
             ocultar_saque_equipo(2);
             equipo_saca = 2;
@@ -410,27 +487,47 @@ function saquePartido() {
             ocultar_saque_equipo(1);
             equipo_saca = 1;
         }
+    }
+
+    if (equipo_saca == 1) {
+        ocultar_saque_equipo(2);
+        equipo_saca = 2;
     } else {
-        if (equipo_saca == 1) {
-            ocultar_saque_equipo(2);
-            if (cantidad_saques == 2) {
-                equipo_saca = 2;
-                cantidad_saques = 0;
-            }
-        } else {
-            ocultar_saque_equipo(1);
-            if (cantidad_saques == 2) {
-                equipo_saca = 1;
-                cantidad_saques = 0;
-            }
-        }
+        ocultar_saque_equipo(1);
+        equipo_saca = 1;
+    }
+}
+
+function saque_ambos_pts_menor_10() {
+    if (equipo_saca == 1 && cantidad_saques > 2) {
+        ocultar_saque_equipo(1);
+        equipo_saca = 2;
+        cantidad_saques = 1;
+    }
+
+    if (equipo_saca == 2 && cantidad_saques > 2) {
+        ocultar_saque_equipo(2);
+        equipo_saca = 1;
+        cantidad_saques = 1;
+    }
+}
+
+function saquePartido() {
+    let pts_ambos_equipos_mayores_10 = equipo1.etiqueta_puntos.textContent >= 10 &&
+        equipo2.etiqueta_puntos.textContent >= 10
+
+    if (pts_ambos_equipos_mayores_10) {
+        saque_ambos_pts_mayor_10();
+    } else {
+        cantidad_saques++;
+        saque_ambos_pts_menor_10();
     }
 }
 
 function set_saque() {
     ultimoSaque == 1 ? equipo_saca = 2 : equipo_saca = 1;
-    cantidad_saques = 0;
     ultimoSaque = equipo_saca;
+    equipo_saca == 1 ? ocultar_saque_equipo(2) : ocultar_saque_equipo(1);
 }
 
 //websockets
