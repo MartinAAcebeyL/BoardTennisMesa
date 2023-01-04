@@ -437,24 +437,12 @@ btnSaque.addEventListener("click", primerSaque);
 
 //saque Partido
 function saque_ambos_pts_mayor_10() {
-    if (equipo1.etiqueta_puntos.textContent == 10 &&
-        equipo2.etiqueta_puntos.textContent == 10) {
-        //cuando ambos equipos tienen 10 puntos
-        if (equipo_saca == 1) {
-            ocultar_saque_equipo(1);
-            equipo_saca = 2;
-        } else {
-            ocultar_saque_equipo(2);
-            equipo_saca = 1;
-        }
+    if (equipo_saca == 1) {
+        ocultar_saque_equipo(2);
+        equipo_saca = 2;
     } else {
-        if (equipo_saca == 1) {
-            ocultar_saque_equipo(2);
-            equipo_saca = 2;
-        } else {
-            ocultar_saque_equipo(1);
-            equipo_saca = 1;
-        }
+        ocultar_saque_equipo(1);
+        equipo_saca = 1;
     }
 }
 
@@ -473,7 +461,7 @@ function saque_ambos_pts_menor_10() {
 }
 
 function saquePartido() {
-    // console.log("equipo_saca: " + equipo_saca + " cantidad_saques: " + cantidad_saques);
+    console.log("equipo_saca: " + equipo_saca + " cantidad_saques: " + cantidad_saques);
 
     let pts_ambos_equipos_mayores_10 = equipo1.etiqueta_puntos.textContent >= 10 &&
         equipo2.etiqueta_puntos.textContent >= 10
@@ -481,12 +469,9 @@ function saquePartido() {
     if (pts_ambos_equipos_mayores_10) {
         saque_ambos_pts_mayor_10();
     } else {
-        console.log("cantidad_saques: ***" + cantidad_saques);
         cantidad_saques++;
         saque_ambos_pts_menor_10();
-        console.log("equipo_saca: " + equipo_saca + " cantidad_saques: " + cantidad_saques);
     }
-    console.log("\n");
 }
 
 function set_saque() {
