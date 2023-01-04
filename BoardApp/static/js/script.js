@@ -83,6 +83,7 @@ function timer() {
 const puntos_equipos = document.querySelectorAll(".puntos");
 
 function sumarPuntos(event) {
+    console.log("aux_cambio_saque: " + aux_cambio_saque);
     let puntos_actuales;
 
     if (equipo1.etiqueta_puntos == event.target) {
@@ -107,6 +108,13 @@ function sumarPuntos(event) {
     if (cambiar_limite_puntos) {
         limite_puntos = parseInt(equipo1.etiqueta_puntos.textContent) + 2;
     }
+    if (aux_cambio_saque) {
+        aux_cambio_saque = false;
+    }
+
+    console.log("cantidad saques: " + cantidad_saques);
+    console.log("\n");
+
     sumarSets(this);
     saquePartido();
 }
@@ -193,7 +201,22 @@ let retrocedio_puntos_equipo2 = false;
 function retroceder_puntos(event) {
     let puntos_equipo1 = parseInt(localStorage.getItem(equipo1.puntos_ls));
     let puntos_equipo2 = parseInt(localStorage.getItem(equipo2.puntos_ls));
+    if (aux_cambio_saque == true && !(puntos_equipo1 >= 10 && puntos_equipo2 >= 10)) {
+        console.log("cambio de saque")
+        let paraCambiar = ultimo_juego.nombre.split("-")[1];
+        if (paraCambiar == "1") {
+            ocultar_saque_equipo(1);
+            equipo_saca = 2;
+        } else {
+            ocultar_saque_equipo(2);
+            equipo_saca = 1;
+        }
 
+        cantidad_saques = 2;
+        let aux = ultimo_juego.etiqueta_puntos.textContent--;
+        localStorage.setItem(ultimo_juego.puntos_ls, --aux);
+        return;
+    }
     if (puntos_equipo1 >= 10 && puntos_equipo2 >= 10) {
         if (this == atras[0]) {
             ocultar_saque_equipo(1);
@@ -206,7 +229,6 @@ function retroceder_puntos(event) {
             localStorage.setItem(equipo2.puntos_ls, --aux);
             equipo_saca = 2;
         }
-        console.log("equipo saca: " + equipo_saca);
     } else {
         if (puntos_equipo1 > 0 && this == atras[0] && !retrocedio_puntos_equipo1) {
             let aux = equipo1.etiqueta_puntos.textContent--;
@@ -215,20 +237,34 @@ function retroceder_puntos(event) {
             retrocedio_puntos_equipo1 = true;
         }
 
-        if (puntos_equipo2 && this == atras[1] && !retrocedio_puntos_equipo2) {
+        if (puntos_equipo2 > 0 && this == atras[1] && !retrocedio_puntos_equipo2) {
             let aux = equipo2.etiqueta_puntos.textContent--;
             localStorage.setItem(equipo2.puntos_ls, --aux);
             cantidad_saques--;
             retrocedio_puntos_equipo2 = true;
         }
     }
-
-
-    console.log("cantidad saques: ----" + cantidad_saques);
+    ultimo_juego = null;
 }
 
 atras.forEach(el => el.addEventListener('click', retroceder_puntos));
+//devolver saque
+const devolver_saque = document.querySelectorAll(".devolver_saque");
+function devolver_saque_equipo(event) {
+    console.log("devoler saque")
+    if (this == devolver_saque[0]) {
+        ocultar_saque_equipo(1);
+        equipo_saca = 2;
+    } else {
+        ocultar_saque_equipo(2);
+        equipo_saca = 1;
+    }
+    cantidad_saques = 3;
+    aux_cambio_saque = false;
+    ultimo_juego = null;
+}
 
+devolver_saque.forEach(el => el.addEventListener('click', devolver_saque_equipo));
 //minuto
 const minuto = document.querySelectorAll('.minuto');
 
@@ -261,7 +297,6 @@ function correr_minuto(event) {
 minuto.forEach(el => el.addEventListener('click', correr_minuto));
 
 // modal de envio de datos
-
 function mostrar_modal_finalizacion() {
     const modal = document.getElementById('modal-envio');
     const primera_fila = document.getElementById("primera-columna-marcador");
@@ -423,6 +458,9 @@ function primerSaque() {
 }
 
 function ocultar_saque_equipo(equipo) {
+    let puntos_equipo1 = parseInt(localStorage.getItem(equipo1.puntos_ls));
+    let puntos_equipo2 = parseInt(localStorage.getItem(equipo2.puntos_ls));
+
     if (equipo == 1) {
         document.getElementById('saque1').style.display = 'none';
         document.getElementById('saque2').style.display = 'block';
@@ -432,11 +470,25 @@ function ocultar_saque_equipo(equipo) {
         document.getElementById('saque1').style.display = 'block';
         socket.emit('saque', "saca:1");
     }
+    if (puntos_equipo2 > 0 || puntos_equipo1 > 0)
+        aux_cambio_saque = true;
 }
 btnSaque.addEventListener("click", primerSaque);
+let aux_cambio_saque = false;
 
 //saque Partido
 function saque_ambos_pts_mayor_10() {
+    if (equipo1.etiqueta_puntos.textContent == 10 &&
+        equipo2.etiqueta_puntos.textContent == 10) {
+        if (equipo_saca == 1) {
+            ocultar_saque_equipo(2);
+            equipo_saca = 2;
+        } else {
+            ocultar_saque_equipo(1);
+            equipo_saca = 1;
+        }
+    }
+
     if (equipo_saca == 1) {
         ocultar_saque_equipo(2);
         equipo_saca = 2;
@@ -461,8 +513,6 @@ function saque_ambos_pts_menor_10() {
 }
 
 function saquePartido() {
-    console.log("equipo_saca: " + equipo_saca + " cantidad_saques: " + cantidad_saques);
-
     let pts_ambos_equipos_mayores_10 = equipo1.etiqueta_puntos.textContent >= 10 &&
         equipo2.etiqueta_puntos.textContent >= 10
 

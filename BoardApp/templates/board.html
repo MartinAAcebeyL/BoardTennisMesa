@@ -78,10 +78,27 @@
         </section>
       </section>
       <footer>
-        <section>
+        <section
+          style="
+            width: 30%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+          "
+        >
           <i class="fa-solid fa-arrow-right fa-xl atras"></i>
+          <button class="devolver_saque">Devolver saque</button>
         </section>
-        <section>
+        <section
+          style="
+            width: 30%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+          "
+        >
+          <button class="devolver_saque">Devolver saque</button>
+
           <i class="fa-solid fa-arrow-left fa-xl atras"></i>
         </section>
       </footer>
@@ -147,7 +164,7 @@
         <button type="submit" id="btn-envio">Enviar y finalizar</button>
       </div>
     </section>
-    <input id="endpoint" type="hidden" value="{{endpoint}}">
+    <input id="endpoint" type="hidden" value="{{endpoint}}" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
       integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
