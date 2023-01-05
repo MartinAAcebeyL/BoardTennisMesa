@@ -165,6 +165,26 @@
       </div>
     </section>
     <input id="endpoint" type="hidden" value="{{endpoint}}" />
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCgof7Iq78bnnqp2J_w63Kd3hRCTL7PkEw",
+        authDomain: "pingpongteam2-fc24c.firebaseapp.com",
+        databaseURL: "https://pingpongteam2-fc24c-default-rtdb.firebaseio.com",
+        projectId: "pingpongteam2-fc24c",
+        storageBucket: "pingpongteam2-fc24c.appspot.com",
+        messagingSenderId: "436850921402",
+        appId: "1:436850921402:web:ade3637eac193ea6075783",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
       integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
