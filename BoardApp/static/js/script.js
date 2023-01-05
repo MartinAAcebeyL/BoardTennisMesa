@@ -83,7 +83,6 @@ function timer() {
 const puntos_equipos = document.querySelectorAll(".puntos");
 
 function sumarPuntos(event) {
-    console.log("aux_cambio_saque: " + aux_cambio_saque);
     let puntos_actuales;
 
     if (equipo1.etiqueta_puntos == event.target) {
@@ -111,9 +110,6 @@ function sumarPuntos(event) {
     if (aux_cambio_saque) {
         aux_cambio_saque = false;
     }
-
-    console.log("cantidad saques: " + cantidad_saques);
-    console.log("\n");
 
     sumarSets(this);
     saquePartido();
@@ -202,7 +198,6 @@ function retroceder_puntos(event) {
     let puntos_equipo1 = parseInt(localStorage.getItem(equipo1.puntos_ls));
     let puntos_equipo2 = parseInt(localStorage.getItem(equipo2.puntos_ls));
     if (aux_cambio_saque == true && !(puntos_equipo1 >= 10 && puntos_equipo2 >= 10)) {
-        console.log("cambio de saque")
         let paraCambiar = ultimo_juego.nombre.split("-")[1];
         if (paraCambiar == "1") {
             ocultar_saque_equipo(1);
@@ -251,7 +246,6 @@ atras.forEach(el => el.addEventListener('click', retroceder_puntos));
 //devolver saque
 const devolver_saque = document.querySelectorAll(".devolver_saque");
 function devolver_saque_equipo(event) {
-    console.log("devoler saque")
     if (this == devolver_saque[0]) {
         ocultar_saque_equipo(1);
         equipo_saca = 2;
@@ -336,11 +330,16 @@ function post_resultado() {
     while (localStorage.length > 0) {
         localStorage.clear()
     }
-    post(json)
-}
+    post(json);
+
+    setTimeout(regrasar, 2000);
+}   
 
 bnt_envio.addEventListener('click', post_resultado);
 
+function regrasar() {
+    window.location.href = "/";
+}
 //Tarjetas Amarillas
 var Amarilla1 = document.getElementById("Amarilla1");
 var Amarilla2 = document.getElementById("Amarilla2");

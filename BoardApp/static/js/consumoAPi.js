@@ -1,17 +1,17 @@
 var endpoint = document.getElementById('endpoint').value;
 
-const base_url = 'http://localhost:3000/';
+const base_url = 'https://pingpongteam2-fc24c-default-rtdb.firebaseio.com/';
 
 const imgs = document.querySelectorAll('.img-equipo');
 const nombre_equipos = document.querySelectorAll('.nombre-equipo');
 const nombre_equipo_modal = document.querySelectorAll('.nombre_equipo_modal');
 async function getData() {
     try {
-        let response = await fetch(base_url + endpoint);
+        let response = await fetch(base_url + endpoint + '.json');
         let json = await response.json();
+
         const imgs_envio = document.querySelectorAll('.img-equipo-envio');
         const nombres_envio = document.querySelectorAll('.nombre-equipo-envio');
-
         for (let i = 0; i < imgs.length; i++) {
             imgs[i].src = `${json.equipos[i]['imagen_pais']}`;
             let nombre = json.equipos[i]['apellido'].split(" ")[0] + " " + json.equipos[i]['nombre'].split(" ")[0].slice(0, 1) + ".";

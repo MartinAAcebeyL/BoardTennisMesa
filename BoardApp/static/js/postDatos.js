@@ -46,19 +46,15 @@ function to_array_text(array) {
 }
 
 function post(json) {
-    const url = "http://localhost:3000/resultados"
+    const url = "https://pingpongteam2-fc24c-default-rtdb.firebaseio.com/resultados.json"
     fetch(url, {
         method: "POST",
-
-        // Adding body or contents to send
         body: JSON.stringify(json),
-
-        // Adding headers to the request
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
     }).then(response => response.json())
-        .then(json => console.log(json));
+        .catch(error => console.log(error));
 }
 
 export { serializar, post };
