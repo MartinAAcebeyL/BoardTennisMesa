@@ -1,0 +1,17 @@
+{
+    "name": "Tablero arbitro",
+    "short_name": "tablero",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "scope": "/",
+    "start_url": "/BoardApp/templates/login.html",
+    "icons": [
+        {
+            "src": "/static/imgs/icono1.jpg",
+            "type": "image/jpg",
+            "sizes": "512x512"
+        }
+    ]
+}
