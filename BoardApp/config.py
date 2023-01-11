@@ -6,7 +6,7 @@ class Config:
 
 
 class Development(Config):
-    DEBUG = False
+    DEBUG = True
     SQLALCHEMY_DATABASE_URI = config("URI")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
