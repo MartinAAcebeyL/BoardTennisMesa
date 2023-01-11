@@ -1,9 +1,15 @@
-from flask_sqlalchemy import SQLAlchemy
-from faker import Faker
-from werkzeug.security import generate_password_hash
-from sqlalchemy.event import listen
+from flask import Flask
+from .views import ping
+from .model import db
 
 
-db = SQLAlchemy()
-Faker.seed(40)
-fake = Faker()
+def create_app(config):
+    app = Flask(__name__,  template_folder='../templates', static_folder='../static')
+
+    app.config.from_object(config)
+    app.register_blueprint(ping, url_prefix='/')
+
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
+    return app

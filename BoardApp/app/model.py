@@ -1,4 +1,13 @@
-from . import *
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash
+from sqlalchemy.event import listen
+from faker import Faker
+
+db = SQLAlchemy()
+Faker.seed(40)
+fake = Faker()
+
+
 
 class Arbitro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,7 +20,8 @@ class Arbitro(db.Model):
 
     @classmethod
     def create(cls, username, password, email):
-        hashed_password = generate_password_hash(password=password, method='sha256')
+        hashed_password = generate_password_hash(
+            password=password, method='sha256')
         return Arbitro(username=username, password=hashed_password, email=email)
 
     def save(self):
